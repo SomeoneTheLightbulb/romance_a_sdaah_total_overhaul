@@ -14,10 +14,11 @@ Q.old_middle = 13; // "old mittelstand"
 Q.new_middle = 14; // "new mittelstand"
 Q.rural = 25; // agriculture and forestry employment... but many of those are proletarians so...
 // source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 43, table 3.3
-Q.unemployed = 8.6;
+Q.unemployed = 5.3;
 Q.catholics = 30;
+Q.youth = 3.3;
 
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
+Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'youth'];
 Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
 
 // Support for party by social group
@@ -75,6 +76,15 @@ Q.catholics_dvp = 5;
 Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 0;
 Q.catholics_other = 10;
+
+Q.youth_spd = 25;
+Q.youth_kpd = 55;
+Q.youth_z = 1;
+Q.youth_ddp = 0;
+Q.youth_dvp = 0;
+Q.youth_dnvp = 5;
+Q.youth_nsdap = 15;
+Q.youth_other = 9;
 !}
 go-to: election_algorithm
 set-jump: post_election
@@ -87,10 +97,11 @@ Q.old_middle = 13; // "old mittelstand"
 Q.new_middle = 14; // "new mittelstand"
 Q.rural = 25; // agriculture and forestry employment... but many of those are proletarians so...
 // source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 43, table 3.3
-Q.unemployed = 20;
+Q.unemployed = 12.4;
 Q.catholics = 30;
+Q.youth = 7.6;
 
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
+Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'youth'];
 Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
 
 // Support for party by social group
@@ -149,6 +160,15 @@ Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 10;
 Q.catholics_other = 5;
 
+Q.youth_spd = 20;
+Q.youth_kpd = 50;
+Q.youth_z = 0;
+Q.youth_ddp = 0;
+Q.youth_dvp = 0;
+Q.youth_dnvp = 5;
+Q.youth_nsdap = 25;
+Q.youth_other = 5;
+
 Q.spd_r = 25;
 Q.kpd_r = 10;
 Q.z_r = 15;
@@ -169,10 +189,11 @@ Q.old_middle = 13; // "old mittelstand"
 Q.new_middle = 14; // "new mittelstand"
 Q.rural = 25; // agriculture and forestry employment... but many of those are proletarians so...
 // source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 43, table 3.3
-Q.unemployed = 33;
+Q.unemployed = 20.5;
 Q.catholics = 30;
+Q.youth = 12.5;
 
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
+Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'youth'];
 Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
 
 // Support for party by social group
@@ -230,6 +251,15 @@ Q.catholics_dvp = 5;
 Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 10;
 Q.catholics_other = 5;
+
+Q.youth_spd = 20;
+Q.youth_kpd = 40;
+Q.youth_z = 0;
+Q.youth_ddp = 0;
+Q.youth_dvp = 0;
+Q.youth_dnvp = 0;
+Q.youth_nsdap = 50;
+Q.youth_other = 5;
 
 Q.spd_r = 25;
 Q.kpd_r = 10;
