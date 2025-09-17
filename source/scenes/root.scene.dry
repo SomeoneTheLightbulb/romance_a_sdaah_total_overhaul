@@ -184,6 +184,12 @@ Q.presidential_powers = 0;
 Q.constitutional_protection = 0;
 Q.kpd_banned = 0;
 Q.nsdap_banned = 0;
+// banning of every other parties, will be used once I figure out what to turn the mod into
+// Q.spd_banned = 0;
+// Q.z_banned = 0;
+// Q.ddp_banned = 0;
+// Q.dvp_banned = 0;
+// Q.dnvp_banned = 0;
 
 // coups and capital strikes happen when you upset the right or the capitalists too much with your policies. they're an additional check on your policies, when purely electoral checks don't suffice.
 // when coup_progress reaches 10 or capital_strike_progress reaches 10, there's a special event that launches the coup.
@@ -193,21 +199,16 @@ Q.capital_strike_progress = 0;
 Q.budget = 4;
 
 // Proportion of different social groups
-// source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 45, table 3.4 - using 1925 figures
-Q.workers = 48; // industry and trade
-Q.old_middle = 13; // "old mittelstand"
-// 16.4 trade & commerce, 6.6 public and private services, 4.4 domestic help
-Q.new_middle = 14; // "new mittelstand"
-Q.rural = 25; // agriculture and forestry employment... but many of those are proletarians so...
-// source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 43, table 3.3
+Q.workers = 48;
+Q.old_middle = 13;
+Q.new_middle = 14;
+Q.rural = 25;
 Q.unemployed = 8.6;
+Q.youth = 11.4;
 Q.catholics = 30;
 
-// unemployment: 1929 - 13.3, 1930 - 22.7, 1931 - 34.3, 1932 - 43.8 (same source as above)
-
-// income for industrial workers in reichsmarks/year - 1928 = 1600 Reichsmarks/year; 1931 = 1440 Reichsmarks/year; 1933 = 1138 Reichsmarks/year - source: https://babel.hathitrust.org/cgi/pt?id=uiug.30112104147985&seq=50
+// income for industrial workers in reichsmarks, not sure if this is used anywhere
 Q.income = 1600;
-// what about incomes for different classes? rural workers? middle-class workers?
 
 // inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BSPDRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
 Q.inflation = 2.9;
@@ -225,7 +226,7 @@ Q.unemployed_qol = 100;
 Q.old_middle_qol = 100;
 Q.new_middle_qol = 100;
 
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
+Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'youth'];
 Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
 
 // TODO: add 'sapd' later on
@@ -287,6 +288,23 @@ Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 0;
 Q.catholics_other = 12;
 
+Q.unemployed_spd = 25;
+Q.unemployed_kpd = 55;
+Q.unemployed_z = 1;
+Q.unemployed_ddp = 0;
+Q.unemployed_dvp = 0;
+Q.unemployed_dnvp = 5;
+Q.unemployed_nsdap = 15;
+Q.unemployed_other = 9;
+
+Q.youth_spd = 20;
+Q.youth_kpd = 60;
+Q.youth_z = 0;
+Q.youth_ddp = 0;
+Q.youth_dvp = 0;
+Q.youth_dnvp = 10;
+Q.youth_nsdap = 15;
+Q.youth_other = 5;
 
 // Current Reichstag composition
 // % of Reichstag in Jan 1928
@@ -319,6 +337,13 @@ Q.old_sapd_r = 0;
 
 // for changing the DDP's name to the DStP
 Q.ddp_name = "DDP";
+// preemptive changing for the other parties
+// Q.kpd_name = "KPD";
+// Q.spd_name = "SPD";
+// Q.z_name = "Z";
+// Q.dvp_name = "DVP";
+// Q.dnvp_name = "DNVP";
+// Q.nsdap_name = "NSDAP";
 
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
@@ -565,7 +590,6 @@ Q.wissell_advisor = 0; // Rudolf Wissell
 
 // Revisionist advisors
 Q.mierendorff_advisor = 0; // Carlo Mierendorf (post-1930)
-
 Q.leber_advisor = 0; // Julius Leber (post-1930)
 Q.schumacher_advisor = 0; // Kurt Schumacher (post-1930)
 
@@ -591,11 +615,33 @@ For more information on the politics and government of the German Republic, see 
 - @1928_historical: Begin (historical mode)
 
 @1928_easy
-on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; budget = 5;
+on-arrival: {!
+difficulty = -1;
+resources = 4;
+dues = 3;
+rb_strength = 2500;
+kpd_relation = 29;
+z_relation = 54;
+dvp_relation = 49;
+budget = 5;
+!}
 go-to: 1928_main
 
 @1928_hard
-on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 1000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; budget = 3;
+on-arrival: {!
+difficulty = 1;
+resources = 0;
+dues = 1;
+rb_strength = 1000;
+reformist_dissent = 25;
+left_dissent = 30;
+labor_dissent = 25;
+center_dissent = 25;
+z_relation = 41;
+kpd_relation = 16;
+dvp_relation = 31;
+budget = 3;
+!}
 go-to: 1928_main
 
 @1928_historical
