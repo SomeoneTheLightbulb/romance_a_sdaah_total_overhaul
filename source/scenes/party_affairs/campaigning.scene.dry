@@ -17,6 +17,7 @@ Whether or not we are in an electoral campaign, the party is always trying to br
 - @rural: Rural workers and small farmers, who have felt neglected by us in the past.
 - @unemployed: The unemployed.
 - @catholics: Catholics, who typically support the Center Party.
+- @youth: The youth.
 - @root: We either don't want to or cannot campaign right now.
 - @easy_discard
 
@@ -68,3 +69,12 @@ view-if: peoples_party == 1
 on-arrival: catholics_spd += 6*(1-dissent); resources -= 1
 
 We have increased our campaigning among Catholics.
+
+@youth
+subtitle: -1 resources
+choose-if: resources >= 1
+unavailable-subtitle: Not enough resources.
+view-if: peoples_party == 1
+on-arrival: youth_spd += 6*(1-dissent); resources -= 1
+
+We have increased our campaigning among the youth.
