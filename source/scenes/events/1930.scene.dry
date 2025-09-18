@@ -1,6 +1,6 @@
 title: 1930
 subtitle: A new year 
-audio: clear shuffle  music/1928_1933/ZurSonneZurFreiheit.mp3 music/1928_1933/ArbeiterMarseillaise.mp3 music/1928_1933/DerLindenbaum.mp3 music/1928_1933/WannWirSchreitenSeitAnSeit.mp3 music/1930_1933/DieInternationale.ogg music/1928_1933/SozialistenMarsch.mp3 music/1930_1933/MarschDerEisernenFront.mp3 music/1930_1933/KommSusserTod.mp3 music/1930_1933/Warszawianka.mp3 music/1928_1933/Liebesleid.mp3 music/1928_1933_Petrograd/Dubinushka.mp3 music/1928_1933_Petrograd/EchTyDolia.mp3 music/1928_1933_Petrograd/LomirSichIberbeiten.mp3 music/1928_1933_Petrograd/OdessaMama.mp3 music/1928_1933_Petrograd/WorkersMarseillaise.mp3
+audio: clear shuffle music/1928_1933/ZurSonneZurFreiheit.mp3 music/1928_1933/ArbeiterMarseillaise.mp3 music/1928_1933/DerLindenbaum.mp3 music/1928_1933/WannWirSchreitenSeitAnSeit.mp3 music/1930_1933/DieInternationale.ogg music/1928_1933/SozialistenMarsch.mp3 music/1930_1933/MarschDerEisernenFront.mp3 music/1930_1933/KommSusserTod.mp3 music/1930_1933/Warszawianka.mp3 music/1928_1933/Liebesleid.mp3 music/1928_1933_Petrograd/Dubinushka.mp3 music/1928_1933_Petrograd/EchTyDolia.mp3 music/1928_1933_Petrograd/LomirSichIberbeiten.mp3 music/1928_1933_Petrograd/OdessaMama.mp3 music/1928_1933_Petrograd/WorkersMarseillaise.mp3
 on-arrival: {!
 // increase NSDAP vote share 
 Q.unemployed += 6.8; 
