@@ -1,5 +1,5 @@
 title: Civil War
-audio: music/communist/A_las_barricadas.ogg
+audio: clear shuffle music/MomentOfDestiny/ALasBarricadas.mp3 music/MomentOfDestiny/TheRedArmyIsTheStrongest.mp3
 on-arrival: {!
 Q.rb_strength = Math.round(Q.rb_strength);
 Q.sh_strength = Math.round(Q.sh_strength);
