@@ -1,5 +1,6 @@
 title: Game Over.
 new-page: true
+audio: clear shuffle music/AndanteCantabileEpilogue.mp3
 go-to: eg_menu
 on-arrival: {!
 Q.game_over = 1;
