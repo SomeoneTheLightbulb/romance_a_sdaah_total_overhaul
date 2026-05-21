@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta prefix="ifiction: http://babel.ifarchive.org/protocol/iFiction/"
         property="ifiction:ifid" content="7FCDF039-2B77-4179-B795-CBAFA65253AA">
-    <title>Social Democracy: An Alternate History - Autumn Chen</title>
+    <title>Romance: A SDAAH Mod</title>
     <link rel="stylesheet" type="text/css" href="game.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <script src="jquery-1.11.1.min.js"></script>
     <script src="d3.v7.min.js"></script>
     <script src="d3-parliament.js"></script>
@@ -21,7 +22,7 @@
     <div class="background" id="bg1">
     </div>
 
-    <div id="options" class="overlay options" style="display: none;">
+    <div id="options" class="overlay" style="display: none;">
         <div class="overlay_top">
             <table>
                 <tr>
@@ -122,6 +123,26 @@
                     </td>
                 </tr>
                 <tr>
+                    <td> <hr> </td>
+                </tr>
+                <tr>
+                    <td>
+                        Colored text:
+                    </td>
+                    <td>
+                        <label for="gray_on">Disable</label>
+                    </td>
+                    <td>
+                        <input type="radio" id="gray_on" name="gray_mode" value="0" onclick="window.enableGrayMode();">
+                    </td>
+                    <td>
+                        <label for="gray_no">Enable</label>
+                    </td>
+                    <td>
+                        <input type="radio" id="gray_no" name="gray_mode" value="1" onclick="window.disableGrayMode();">
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <button onclick="window.hideOptions();">Close</button>
                     </td>
@@ -138,7 +159,7 @@
         </div>
     </div>
 
-    <div id="save" class="overlay saves" style="display: none;">
+    <div id="save" class="overlay" style="display: none;">
         <table id="saves_table" class="overlay_top">
             <tr>
                 <td>Auto-0</td>
@@ -296,24 +317,33 @@
     <div id='page'>
         <div id="mid_panel">
             <header>
-                <h1 id="game-title">Social Democracy: An Alternate History</h1>
-                <h2 id="game-author">Autumn Chen</h2>
+                <h1 id="game-title">Romance: A SDAAH Mod</h1>
+                <h2 id="game-author">Autumn Chen, modded by originn0 & Forkfinder22 & TN296Modding & PlaceholderName</h2>
 
                 <div id="header-links">
                     <a id="stats-link" onclick="window.showStats();" href="#">Library</a>
                     <a onclick="dendryUI.showSaveSlots();" href="#">Save/Load</a>
                     <a onclick="window.showOptions();" href="#">Options</a>
+                    <a id="sandbox-link" onclick="window.showSandbox();" href="#">Sandbox</a>
                 </div>
             </header>
             <div id="tools_wrapper">
                 <div id='stats_sidebar' class='tools left'>
                     <div class="tab_container">
-                        <button class="tab_button active" id="main_tab" onclick="window.changeTab('status', 'main_tab');">Main</button>
-                        <button class="tab_button" id="politics_tab" onclick="window.changeTab('status.politics', 'politics_tab');">Politics</button>
-                        <button class="tab_button" id="paramilitary_tab" onclick="window.changeTab('status.paramilitaries', 'paramilitary_tab');">Defense</button>
-                        <button class="tab_button" id="poll_tab" onclick="window.changeTab('status.polls', 'poll_tab');">Polls</button>
+    <button class="tab_button" id="emergency_tab" onclick="window.changeTab('status.emergency', 'emergency_tab');" style="display: none;">Emergency Status</button>
+    <button class="tab_button active" id="main_tab" onclick="window.changeTab('status', 'main_tab');">Main</button>
+    <button class="tab_button" id="relations_tab" onclick="window.changeTab('status.relations', 'relations_tab');">Relations</button>
+    <button class="tab_button" id="influence_tab" onclick="window.changeTab('status.influence', 'influence_tab');">Influence</button>
+    <button class="tab_button" id="activity_tab" onclick="window.changeTab('status.polls', 'poll_tab');">Activity</button>
                     </div>
                     <div id="qualities">
+                    </div>
+                </div>
+                <div id='stats_sidebar_right' class='tools right'>
+                    <div class="tab_container">
+                        <button class="tab_button active" id="scheming_tab" onclick="window.changeTab('status_right', 'scheming_tab', true);">Scheming</button>
+                    </div>
+                    <div id="qualities_right">
                     </div>
                 </div>
             </div>
