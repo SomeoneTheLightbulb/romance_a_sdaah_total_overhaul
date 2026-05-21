@@ -6,7 +6,7 @@ go-to: post_event if started = 1; start_menu if started = 0
 new-page: true
 go-to: start_menu_2
 
-= Social Democracy: An Alternate History
+= Romance: A SDAAH Mod
 
 @start_menu_2
 
@@ -21,32 +21,89 @@ on-arrival: {!
 Q.started = 1;
 // time elapsed (in months)
 Q.time = 1;
-Q.year = 1928;
+Q.year = 1;
 Q.month = 1;
 Q.week = 1;
 Q.day = 1;
-// how many actions have been taken this month?
+
 Q.month_actions = 0;
+Q.week_actions = 0;
 Q.day_actions = 0;
 
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
 Q.difficulty = 0;
 Q.historical_mode = 0;
+Q.player_party_name = "N/A";
+Q.player_party = "cf";
+Q.party_name_map = {"o": "Menshevik",
+        "g": "Bolshevik",
+        "k": "SR",
+        "cf": "Kadet"};
+        "t": "Kadet"};
+        "bb": "Kadet"};
+        "y": "Kadet"};
+
+Q.o_is_player = 0;
+Q.g_is_player = 0;
+Q.k_is_player = 0;
+Q.cf_is_player = 1;
+Q.t_is_player = 0;
+Q.bb_is_player = 0;
+Q.y_is_player = 0;
+
+// multiplayer stuff
+Q.current_player = 1;
+Q.n_players = 1;
+// the player ID of the next player
+Q.next_player = 0;
+
+Q.player1_party = "cf";
+Q.player2_party = "";
+Q.player3_party = "";
+Q.player4_party = "";
+Q.player5_party = "";
+Q.player6_party = "";
+Q.player7_party = "";
+
+// party resources
+Q.o_resources = 2;
+Q.g_resources = 2;
+Q.k_resources = 2;
+Q.cf_resources = 2;
+Q.t_resources = 2;
+Q.bb_resources = 2;
+Q.y_resources = 3;
+// party dues
+Q.o_dues = 2;
+Q.g_dues = 2;
+Q.k_dues = 2;
+Q.cf_dues = 2;
+Q.t_dues = 2;
+Q.bb_dues = 2;
+Q.y_dues = 3;
+
 // old demographics
 Q.old_demographics = 0;
 // use decimals for reichstag seats
 // TODO: not yet implemented
 Q.use_decimals = 1;
 
-// party resources
-Q.resources = 2;
-// party dues
-Q.dues = 2;
-
 // the state of the party
 // overall dissent reduces every increase in party support.
-Q.dissent = 0.05;
-Q.dissent_percent = 5;
+Q.o_dissent = 0.05;
+Q.o_dissent_percent = 5;
+Q.g_dissent = 0.05;
+Q.g_dissent_percent = 5;
+Q.k_dissent = 0.05;
+Q.k_dissent_percent = 5;
+Q.cf_dissent = 0.05;
+Q.cf_dissent_percent = 5;
+Q.t_dissent = 0.05;
+Q.t_dissent_percent = 5;
+Q.bb_dissent = 0.05;
+Q.bb_dissent_percent = 5;
+Q.y_dissent = 0.05;
+Q.y_dissent_percent = 5;
 
 // factions
 Q.factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
@@ -632,54 +689,24 @@ For more information on the politics and government of the German Republic, see 
 - @1928_historical: Begin (historical mode)
 
 @1928_easy
-on-arrival: {!
-difficulty = -1;
-resources = 4;
-dues = 3;
-rb_strength = 2500;
-kpd_relation = 29;
-z_relation = 54;
-dvp_relation = 49;
-budget = 5;
-!}
-go-to: 1928_main
+on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; budget = 5
+go-to: player_selection
 
 @1928_hard
-on-arrival: {!
-difficulty = 1;
-resources = 0;
-dues = 1;
-rb_strength = 1000;
-reformist_dissent = 25;
-left_dissent = 30;
-labor_dissent = 25;
-center_dissent = 25;
-z_relation = 41;
-kpd_relation = 16;
-dvp_relation = 31;
-budget = 3;
-!}
-go-to: 1928_main
+on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 1000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; budget = 3;
+go-to: player_selection
 
 @1928_historical
 subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
-on-arrival: {!
-Q.difficulty = 2;
-Q.historical_mode = 1;
-Q.resources = 2;
-Q.dues = 1;
-Q.rb_strength = 2000;
-Q.reformist_dissent = 25;
-Q.left_dissent = 30;
-Q.labor_dissent = 25;
-Q.center_dissent = 25;
-Q.z_relation = 41;
-Q.kpd_relation = 16;
-Q.dvp_relation = 31;
-Q.budget = 2;
-this.state.disableSaves = true;
-!}
-go-to: 1928_main
+on-arrival: difficulty = 2; historical_mode = 1; resources = 2; dues = 1; rb_strength = 2000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; budget = 2; this.state.disableSaves = true;
+go-to: player_selection
+
+@player_selection
+
+- @mensheviks
+- @sr
+- @kadets
+- @bolsheviks
 
 @1928_main
 audio: shuffle music/1928_1930/Fruhlingslied.mp3 music/1928_1930/AufHohenBergen.mp3 music/1928_1930/LiedDerPompadour.mp3 music/1928_1930/FrauleinWieKannManNurSoTreuSein.mp3 music/1928_1930/UOkenecka.mp3 music/1928_1933/DerLindenbaum.mp3 music/1928_1933/ZurSonneZurFreiheit.mp3 music/1928_1933/ArbeiterMarseillaise.mp3 music/1928_1933/WannWirSchreitenSeitAnSeit.mp3 music/1928_1933/DieInternationale.mp3 music/1928_1933/SozialistenMarsch.mp3 music/1928_1930_Petrograd/AndanteCantabileNormal.mp3 music/1928_1930_Petrograd/AyUchniem.mp3 music/1928_1930_Petrograd/Kalinka.mp3 music/1928_1930_Petrograd/LongingForOurCountry.mp3 music/1928_1930_Petrograd/SwetitMiesatz.mp3 music/1928_1933_Petrograd/Dubinushka.mp3 music/1928_1933_Petrograd/OdessaMama.mp3
