@@ -11,7 +11,7 @@ go-to: start_menu_2
 @start_menu_2
 
 - @start: Start game
-- @election_simulation: Election simulation
+- @mod_info: Mod Information
 - @credits: Credits
 - @game_over.achievements
 
@@ -33,9 +33,9 @@ Q.day_actions = 0;
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
 Q.difficulty = 0;
 Q.historical_mode = 0;
-Q.player_party_name = "N/A";
-Q.player_party = "cf";
-Q.party_name_map = {"o": "Menshevik",
+Q.player_name = "N/A";
+Q.player = "cf";
+Q.player_name_map = {"o": "Menshevik",
         "g": "Bolshevik",
         "k": "SR",
         "cf": "Kadet"};
@@ -51,7 +51,7 @@ Q.t_is_player = 0;
 Q.bb_is_player = 0;
 Q.y_is_player = 0;
 
-// multiplayer stuff
+// multiplayer stuff, imported from Petrograd
 Q.current_player = 1;
 Q.n_players = 1;
 // the player ID of the next player
@@ -65,7 +65,7 @@ Q.player5_party = "";
 Q.player6_party = "";
 Q.player7_party = "";
 
-// party resources
+// time i guess
 Q.o_resources = 2;
 Q.g_resources = 2;
 Q.k_resources = 2;
@@ -73,7 +73,7 @@ Q.cf_resources = 2;
 Q.t_resources = 2;
 Q.bb_resources = 2;
 Q.y_resources = 3;
-// party dues
+// resting phase, determines time regen
 Q.o_dues = 2;
 Q.g_dues = 2;
 Q.k_dues = 2;
@@ -88,8 +88,8 @@ Q.old_demographics = 0;
 // TODO: not yet implemented
 Q.use_decimals = 1;
 
-// the state of the party
-// overall dissent reduces every increase in party support.
+// player's internal state
+// dissent is effectiveness. more dissent reduces effectiveness.
 Q.o_dissent = 0.05;
 Q.o_dissent_percent = 5;
 Q.g_dissent = 0.05;
@@ -105,9 +105,15 @@ Q.bb_dissent_percent = 5;
 Q.y_dissent = 0.05;
 Q.y_dissent_percent = 5;
 
-// factions
-Q.factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
-// should this be normalized to 100%?
+// personalities
+Q.o_factions = ['o_', 'o_',];
+Q.left_strength = 65;
+Q.left_dissent = 20;
+Q.center_strength = 35;
+Q.center_dissent = 0;
+
+// personalities
+Q.g_factions = ['g_', 'g_', 'labor', 'reformist', 'neorevisionist'];
 Q.left_strength = 15;
 Q.left_dissent = 20;
 Q.center_strength = 30;
@@ -118,6 +124,67 @@ Q.reformist_strength = 25;
 Q.reformist_dissent = 5;
 Q.neorevisionist_strength = 5;
 Q.neorevisionist_dissent = 10;
+
+// personalities
+Q.k_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.left_strength = 15;
+Q.left_dissent = 20;
+Q.center_strength = 30;
+Q.center_dissent = 0;
+Q.labor_strength = 25;
+Q.labor_dissent = 5;
+Q.reformist_strength = 25;
+Q.reformist_dissent = 5;
+Q.neorevisionist_strength = 5;
+Q.neorevisionist_dissent = 10;
+
+// personalities
+Q.cf_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.left_strength = 15;
+Q.left_dissent = 20;
+Q.center_strength = 30;
+Q.center_dissent = 0;
+Q.labor_strength = 25;
+Q.labor_dissent = 5;
+Q.reformist_strength = 25;
+Q.reformist_dissent = 5;
+Q.neorevisionist_strength = 5;
+Q.neorevisionist_dissent = 10;
+
+// personalities
+Q.t_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.left_strength = 15;
+Q.left_dissent = 20;
+Q.center_strength = 30;
+Q.center_dissent = 0;
+Q.labor_strength = 25;
+Q.labor_dissent = 5;
+Q.reformist_strength = 25;
+Q.reformist_dissent = 5;
+Q.neorevisionist_strength = 5;
+Q.neorevisionist_dissent = 10;
+
+// personalities
+Q.bb_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.left_strength = 15;
+Q.left_dissent = 20;
+Q.center_strength = 30;
+Q.center_dissent = 0;
+Q.labor_strength = 25;
+Q.labor_dissent = 5;
+Q.reformist_strength = 25;
+Q.reformist_dissent = 5;
+Q.neorevisionist_strength = 5;
+Q.neorevisionist_dissent = 10;
+
+// personalities
+Q.y_factions = ['left', 'center', 'labor'];
+Q.left_strength = 15;
+Q.left_dissent = 20;
+Q.center_strength = 30;
+Q.center_dissent = 0;
+Q.labor_strength = 25;
+Q.labor_dissent = 5;
 
 // Faction resignation
 Q.unions_independent = 0;
