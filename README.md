@@ -1,4 +1,4 @@
-# Social Democracy: An Alternate History
+# Romance - A Social Democracy: An Alternate History Mod
 
 ## Included Libraries
 
