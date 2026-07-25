@@ -35,14 +35,7 @@ Q.difficulty = 0;
 Q.historical_mode = 0;
 Q.player_name = "N/A";
 Q.player = "cf";
-Q.player_name_map = {"o": "Menshevik",
-        "g": "Bolshevik",
-        "k": "SR",
-        "cf": "Kadet"};
-        "t": "Kadet"};
-        "bb": "Kadet"};
-        "y": "Kadet"};
-
+Q.player_name_map = {"o": "Menshevik", "g": "Bolshevik", "k": "SR", "cf": "Kadet", "t": "Kadet", "bb": "Kadet", "y": "Kadet"};
 Q.o_is_player = 0;
 Q.g_is_player = 0;
 Q.k_is_player = 0;
@@ -360,18 +353,11 @@ Q.economic_growth = 4.4;
 // economic expansion timer
 Q.economic_expansion = 0;
 
-// quality of life (as % of 1928 - currently unused - should be welfare-adjusted.)
-Q.workers_qol = 100;
-Q.rural_qol = 100;
-Q.unemployed_qol = 100;
-Q.old_middle_qol = 100;
-Q.new_middle_qol = 100;
-
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'youth'];
-Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
+Q.parties = ['kpd', 'spd', 'ddp', 'z', 'dvp', 'dnvp', 'nsdap', 'other_left', 'other_right', 'other'];
 
 // TODO: add 'sapd' later on
-Q.sapd_formed = 0;
+Q.others_split = 0;
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
@@ -383,6 +369,8 @@ Q.workers_dvp = 0;
 Q.workers_dnvp = 6;
 Q.workers_nsdap = 0;
 Q.workers_other = 10;
+Q.workers_other_left = 0;
+Q.workers_other_right = 0;
 
 Q.old_middle_spd = 8;
 Q.old_middle_kpd = 1;
@@ -392,6 +380,8 @@ Q.old_middle_dvp = 22;
 Q.old_middle_dnvp = 10;
 Q.old_middle_nsdap = 4;
 Q.old_middle_other = 22;
+Q.old_middle_other_left = 0;
+Q.old_middle_other_right = 0;
 
 Q.new_middle_spd = 4;
 Q.new_middle_kpd = 0;
@@ -401,6 +391,8 @@ Q.new_middle_dvp = 27;
 Q.new_middle_dnvp = 24;
 Q.new_middle_nsdap = 9;
 Q.new_middle_other = 20;
+Q.new_middle_other_left = 0;
+Q.new_middle_other_right = 0;
 
 Q.rural_spd = 9;
 Q.rural_kpd = 0;
@@ -410,6 +402,8 @@ Q.rural_dvp = 15;
 Q.rural_dnvp = 46;
 Q.rural_nsdap = 3;
 Q.rural_other = 16;
+Q.rural_other_left = 0;
+Q.rural_other_right = 0;
 
 Q.unemployed_spd = 21;
 Q.unemployed_kpd = 50;
@@ -419,6 +413,8 @@ Q.unemployed_dvp = 0;
 Q.unemployed_dnvp = 4;
 Q.unemployed_nsdap = 13;
 Q.unemployed_other = 7;
+Q.unemployed_other_left = 0;
+Q.unemployed_other_right = 0;
 
 Q.catholics_spd = 21;
 Q.catholics_kpd = 2;
@@ -428,6 +424,8 @@ Q.catholics_dvp = 5;
 Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 0;
 Q.catholics_other = 16;
+Q.catholics_other_left = 0;
+Q.catholics_other_right = 0;
 
 Q.youth_spd = 38;
 Q.youth_kpd = 36;
@@ -437,6 +435,8 @@ Q.youth_dvp = 0;
 Q.youth_dnvp = 5;
 Q.youth_nsdap = 7.5;
 Q.youth_other = 8.5;
+Q.youth_other_left = 0;
+Q.youth_other_right = 0;
 
 // Current Reichstag composition
 // % of Reichstag in Jan 1928
