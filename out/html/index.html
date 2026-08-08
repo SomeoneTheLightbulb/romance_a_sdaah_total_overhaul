@@ -22,8 +22,16 @@
     <div class="background" id="bg1">
     </div>
 
-    <div id="options" class="overlay" style="display: none;">
+    <div id="options" class="overlay options" style="display: none;">
+
         <div class="overlay_top">
+        <div class="music_player">
+            <h3>Music</h3>
+            <p>Currently playing: <span id="currently_playing"></span></p>
+            <p><label for="volume">Volume:</label><input type="range" min="0" max="100" value="100" id="volume" name="volume" oninput="window.setVolume(this.value);"></p>
+            <p style="text-align: center;"><button onclick="window.shuffle();">Next song</button></p>
+        </div>
+            <h3>Settings</h3>
             <table>
                 <tr>
                     <td>
@@ -127,20 +135,21 @@
                 </tr>
                 <tr>
                     <td>
-                        Colored text:
+                        Font size:
+                    </td>
+
+                    <td colspan=2>
+                        <button onclick="window.decreaseFontSize();">Decrease font size</button>
+                    </td>
+                    <td colspan=2>
+                        <button onclick="window.increaseFontSize();">Increase font size</button>
                     </td>
                     <td>
-                        <label for="gray_on">Disable</label>
+                        <span id="font_size_value"></span>
                     </td>
-                    <td>
-                        <input type="radio" id="gray_on" name="gray_mode" value="0" onclick="window.enableGrayMode();">
-                    </td>
-                    <td>
-                        <label for="gray_no">Enable</label>
-                    </td>
-                    <td>
-                        <input type="radio" id="gray_no" name="gray_mode" value="1" onclick="window.disableGrayMode();">
-                    </td>
+                </tr>
+                <tr>
+                    <td> <hr> </td>
                 </tr>
                 <tr>
                     <td>
