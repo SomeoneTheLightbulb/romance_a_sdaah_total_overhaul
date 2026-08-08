@@ -50,13 +50,13 @@ Q.n_players = 1;
 // the player ID of the next player
 Q.next_player = 0;
 
-Q.player1_party = "cf";
-Q.player2_party = "";
-Q.player3_party = "";
-Q.player4_party = "";
-Q.player5_party = "";
-Q.player6_party = "";
-Q.player7_party = "";
+Q.player1_character = "cf";
+Q.player2_character = "";
+Q.player3_character = "";
+Q.player4_character = "";
+Q.player5_character = "";
+Q.player6_character = "";
+Q.player7_character = "";
 
 // time i guess
 Q.o_resources = 2;
@@ -83,8 +83,8 @@ Q.use_decimals = 1;
 
 // player's internal state
 // dissent is effectiveness. more dissent reduces effectiveness.
-Q.o_dissent = 0.05;
-Q.o_dissent_percent = 5;
+Q.h_dissent = 0.05;
+Q.h_dissent_percent = 5;
 Q.g_dissent = 0.05;
 Q.g_dissent_percent = 5;
 Q.k_dissent = 0.05;
@@ -122,17 +122,17 @@ Q.neorevisionist_dissent = 10;
 Q.k_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
 Q.left_strength = 15;
 Q.left_dissent = 20;
-Q.center_strength = 30;
-Q.center_dissent = 0;
-Q.labor_strength = 25;
-Q.labor_dissent = 5;
+Q.center_strength = 25;
+Q.center_dissent = 5;
+Q.labor_strength = 30;
+Q.labor_dissent = 0;
 Q.reformist_strength = 25;
 Q.reformist_dissent = 5;
 Q.neorevisionist_strength = 5;
 Q.neorevisionist_dissent = 10;
 
 // personalities
-Q.cf_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.cf_factions = ['left', 'center', 'labor', 'reformist', 'cf_devoted'];
 Q.left_strength = 15;
 Q.left_dissent = 20;
 Q.center_strength = 30;
@@ -141,12 +141,12 @@ Q.labor_strength = 25;
 Q.labor_dissent = 5;
 Q.reformist_strength = 25;
 Q.reformist_dissent = 5;
-Q.neorevisionist_strength = 5;
-Q.neorevisionist_dissent = 10;
+Q.cf_devoted_strength = 0;
+Q.cf_devoted_dissent = 0;
 
 // personalities
-Q.t_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
-Q.left_strength = 15;
+Q.t_factions = ['t_', 'center', 'labor', 'reformist', 't_'];
+Q.t_strength = 15;
 Q.left_dissent = 20;
 Q.center_strength = 30;
 Q.center_dissent = 0;
@@ -155,7 +155,7 @@ Q.labor_dissent = 5;
 Q.reformist_strength = 25;
 Q.reformist_dissent = 5;
 Q.neorevisionist_strength = 5;
-Q.neorevisionist_dissent = 10;
+Q.t_dissent = 10;
 
 // personalities
 Q.bb_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
@@ -171,13 +171,13 @@ Q.neorevisionist_strength = 5;
 Q.neorevisionist_dissent = 10;
 
 // personalities
-Q.y_factions = ['left', 'center', 'labor'];
-Q.left_strength = 15;
-Q.left_dissent = 20;
-Q.center_strength = 30;
-Q.center_dissent = 0;
-Q.labor_strength = 25;
-Q.labor_dissent = 5;
+Q.y_factions = ['y_devoted', 'y_possessive', 'y_obsessive'];
+Q.y_devoted_strength = 65;
+Q.y_devoted_dissent = 0;
+Q.y_possessive_strength = 15;
+Q.y_possessive_dissent = 5;
+Q.y_obsessive_strength = 10;
+Q.y_obsessive_dissent = 5;
 
 // Faction resignation
 Q.unions_independent = 0;
@@ -220,76 +220,64 @@ Q.iron_front_formed = 0;
 // people's party support
 Q.peoples_party_support = 0;
 
-// organizations
+// interpersonal relations
+Q.o_g_relation = 30;
+Q.o_k_relation = 10;
+Q.o_cf_relation = 10;
+Q.o_t_relation = 0;
+Q.o_bb_relation = 0;
+Q.o_y_relation = 0;
 
-// inter-party relations, the dnvp and nsdap analogues are supposed to be invariably hostile.
-Q.kpd_relation = 25;
-Q.z_relation = 50;
-Q.ddp_relation = 60;
-Q.dvp_relation = 35;
-Q.dnvp_relation = 10;
-Q.nsdap_relation = 0;
+Q.g_o_relation = 30;
+Q.g_cf_relation = 45;
+Q.g_k_relation = 55;
+Q.g_t_relation = 25;
+Q.g_bb_relation = 10;
+Q.g_y_relation = 0;
 
-// Leaders, perhaps leader can be names, while party leaders their personalities?
-// alternative is the Conciliators as party leader
-Q.kpd_leader = "Thälmann";
-Q.kpd_party_leader = "Thälmann";
-// party leader - can be Ludwig Kaas, Joseph Joos, or Adam Stegerwald after the 1928 December conference. Joos will be most friendly to the SPD.
-Q.z_leader = "Brüning";
-Q.z_party_leader = "Marx";
-// missing
-Q.ddp_leader = "N/A";
-Q.ddp_party_leader = "N/A";
-Q.dvp_leader = "N/A";
-Q.dvp_party_leader = "N/A";
-Q.dnvp_leader = "N/A";
-Q.dnvp_party_leader = "N/A";
-Q.nsdap_leader = "Hitler";
-Q.nsdap_party_leader = "N/A";
+Q.k_o_relation = 10;
+Q.k_g_relation = 55;
+Q.k_cf_relation = 55;
+Q.k_t_relation = 60;
+Q.k_bb_relation = 25;
+Q.k_y_relation = 0;
 
-// relationship with the president, I think the president, or the love interest in this case, should be constant imo in a romance game
-Q.hindenburg_relation = 25;
-// whether or not the president can dismiss the government.
-Q.hindenburg_enabled = 0;
+Q.cf_o_relation = 10;
+Q.cf_g_relation = 45;
+Q.cf_k_relation = 55;
+Q.cf_t_relation = 50;
+Q.cf_bb_relation = 20;
+Q.cf_y_relation = 10;
 
+Q.t_o_relation = 0;
+Q.t_g_relation = 25;
+Q.t_k_relation = 60;
+Q.t_cf_relation = 50;
+Q.t_bb_relation = 50;
+Q.t_y_relation = 10;
 
-// Does the SPD lead in Prussia?
-Q.spd_prussia = 1;
-// Options: spd, z, dnvp, papen, nsdap
-Q.prussian_government = "SPD";
+Q.bb_o_relation = 0;
+Q.bb_g_relation = 10;
+Q.bb_k_relation = 25;
+Q.bb_cf_relation = 20;
+Q.bb_t_relation = 50;
+Q.bb_y_relation = 25;
 
-// The array of forces - paramilitary groups
-// Number of members in 1928 (in thousands)
-// Reichsbanner, stahlhelm, SA, rotfrontkämpferbund
-Q.rb_strength = 2000;
-Q.rb_militancy = 0.01;
-Q.women_in_rb = 0;
-Q.rb_banned = 0;
-Q.sh_strength = 500;
-Q.sh_militancy = 0.5;
-Q.sh_banned = 0;
-Q.sh_banned_prussia = 0;
-Q.sa_strength = 80;
-Q.sa_militancy = 0.5;
-Q.sa_banned = 0;
-Q.sa_banned_prussia = 0;
-Q.rfb_strength = 130;
-Q.rfb_militancy = 0.5;
-Q.rfb_banned = 0;
-Q.rfb_banned_prussia = 0;
+Q.y_o_relation = 0;
+Q.y_g_relation = 0;
+Q.y_k_relation = 0;
+Q.y_cf_relation = 10;
+Q.y_t_relation = 10;
+Q.y_bb_relation = 25;
 
-Q.interior_police_strength = 50;
-Q.interior_police_militancy = 1;
-Q.interior_police_loyalty = 0.45;
-
-Q.prussian_police_strength = 90;
-Q.prussian_police_militancy = 1;
-Q.prussian_police_loyalty = 0.5;
-
-// strength includes actual military and de facto reserves?
-Q.reichswehr_strength = 100;
-Q.reichswehr_militancy = 5;
-Q.reichswehr_loyalty = 0.2;
+// relationship with the love interest
+Q.o_love_interest_relation = 0;
+Q.g_love_interest_relation = 10;
+Q.k_love_interest_relation = 10;
+Q.cf_love_interest_relation = 25;
+Q.t_love_interest_relation = 5;
+Q.bb_love_interest_relation = 5;
+Q.y_love_interest_relation = 0;
 
 // The state of the country
 
@@ -303,17 +291,6 @@ Q.socialism = 40;
 Q.pro_republic = 59;
 
 Q.emergency_rule = 0;
-
-// minimum percentage of votes to be represented in the Reichstag
-Q.electoral_threshold = 0;
-// constitutional reform level
-Q.constitutional_reform = 0;
-// constructive vote of no confidence
-Q.constructive_vonc = 0;
-// reduction in presidential powers
-Q.presidential_powers = 0;
-// allows banning of non-constitutional parties
-Q.constitutional_protection = 0;
 
 // pretty sure this is just a game over, is it not?
 Q.spd_banned = 0;
@@ -529,8 +506,6 @@ Q.spd_toleration = 0;
 Q.minority_government = 0;
 
 // ministries - which parties control the ministries?
-// starting with the 4th Marx cabinet https://en.wikipedia.org/wiki/Fourth_Marx_cabinet
-// is the agricultural ministry useful at all?
 Q.foreign_minister = 'Streseman';
 Q.foreign_minister_party = 'DVP';
 Q.interior_minister = 'von Keudell';
@@ -692,30 +667,19 @@ Q.march_on_berlin_timer = 0;
 
 // all the initial advisors are centrists.
 Q.wels_advisor = 1; // Otto Wels
-Q.wels_dead = 0;
 Q.muller_advisor = 1; // Hermann Müller
-Q.muller_dead = 0;
-// okay I know Arthur Crispien was a leader irl but i couldn't find much interesting about him...
 Q.crispien_advisor = 0; // Arthur Crispien
-Q.crispien_dead = 0;
 Q.hilferding_advisor = 1; // Rudolf Hilferding
-Q.hilferding_dead = 0;
 
 // left advisors
 Q.sender_advisor = 0; // Toni Sender
-Q.sender_dead = 0;
 Q.levi_advisor = 0; // Paul Levi
-Q.levi_dead = 0;
 Q.rosenfeld_advisor = 0; // Kurt Rosenfeld
-Q.rosenfeld_advisor = 0;
 Q.seydewitz_advisor = 0; // Max Seydewitz
-Q.seydewitz_dead = 0;
 
 // centrist alternate advisors
 Q.pfulf_advisor = 0; // Antonie Pfülf
-Q.pfulf_dead = 0;
 Q.breitscheid_advisor = 0; // Rudolf Breitscheid
-Q.breitscheid_dead = 0;
 
 // Reformist advisors
 Q.severing_advisor = 0; // Carl Severing
@@ -773,7 +737,7 @@ go-to: player_selection
 
 Select a character:
 
-@1928_historical
+@1928_very_hard
 subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
 on-arrival: difficulty = 4; historical_mode = 1; resources = 2; dues = 1; rb_strength = 2000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; budget = 2; this.state.disableSaves = true;
 go-to: player_selection
