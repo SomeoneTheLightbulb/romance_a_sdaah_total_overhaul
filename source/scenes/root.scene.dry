@@ -35,13 +35,13 @@ Q.difficulty = 0;
 Q.historical_mode = 0;
 Q.player_name = "N/A";
 Q.player = "cf";
-Q.player_name_map = {"o": "Menshevik", "g": "Bolshevik", "k": "SR", "cf": "Kadet", "t": "Kadet", "bb": "Kadet", "y": "Kadet"};
-Q.o_is_player = 0;
+Q.player_name_map = {"h": "Menshevik", "g": "Bolshevik", "kd": "SR", "cf": "Kadet", "t": "Kadet", "d": "Kadet", "y": "Kadet"};
+Q.h_is_player = 0;
 Q.g_is_player = 0;
 Q.k_is_player = 0;
 Q.cf_is_player = 1;
 Q.t_is_player = 0;
-Q.bb_is_player = 0;
+Q.d_is_player = 0;
 Q.y_is_player = 0;
 
 // multiplayer stuff, imported from Petrograd
@@ -59,20 +59,20 @@ Q.player6_character = "";
 Q.player7_character = "";
 
 // time i guess
-Q.o_resources = 2;
+Q.h_resources = 2;
 Q.g_resources = 2;
-Q.k_resources = 2;
+Q.kd_resources = 2;
 Q.cf_resources = 2;
 Q.t_resources = 2;
-Q.bb_resources = 2;
+Q.d_resources = 2;
 Q.y_resources = 3;
 // resting phase, determines time regen
-Q.o_dues = 2;
+Q.h_dues = 2;
 Q.g_dues = 2;
-Q.k_dues = 2;
+Q.kd_dues = 2;
 Q.cf_dues = 2;
 Q.t_dues = 2;
-Q.bb_dues = 2;
+Q.d_dues = 2;
 Q.y_dues = 3;
 
 // old demographics
@@ -87,88 +87,88 @@ Q.h_dissent = 0.05;
 Q.h_dissent_percent = 5;
 Q.g_dissent = 0.05;
 Q.g_dissent_percent = 5;
-Q.k_dissent = 0.05;
-Q.k_dissent_percent = 5;
+Q.kd_dissent = 0.05;
+Q.kd_dissent_percent = 5;
 Q.cf_dissent = 0.05;
 Q.cf_dissent_percent = 5;
 Q.t_dissent = 0.05;
 Q.t_dissent_percent = 5;
-Q.bb_dissent = 0.05;
-Q.bb_dissent_percent = 5;
+Q.d_dissent = 0.05;
+Q.d_dissent_percent = 5;
 Q.y_dissent = 0.05;
 Q.y_dissent_percent = 5;
 
 // personalities
-Q.o_factions = ['o_', 'o_',];
+Q.h_factions = ['h_', 'h_', 'h_'];
 Q.left_strength = 65;
 Q.left_dissent = 20;
 Q.center_strength = 35;
 Q.center_dissent = 0;
 
 // personalities
-Q.g_factions = ['g_', 'g_', 'labor', 'reformist', 'neorevisionist'];
-Q.left_strength = 15;
-Q.left_dissent = 20;
-Q.center_strength = 30;
-Q.center_dissent = 0;
-Q.labor_strength = 25;
-Q.labor_dissent = 5;
-Q.reformist_strength = 25;
-Q.reformist_dissent = 5;
-Q.neorevisionist_strength = 5;
-Q.neorevisionist_dissent = 10;
+Q.g_factions = ['g_energetic', 'g_outgoing', 'g_cheerful', 'g_friendly', 'g_affectionate'];
+Q.g_energetic_strength = 15;
+Q.g_energetic_dissent = 20;
+Q.g_outgoing_strength = 30;
+Q.g_outgoing_dissent = 0;
+Q.g_cheerful_strength = 25;
+Q.g_cheerful_dissent = 5;
+Q.g_friendly_strength = 25;
+Q.g_friendly_dissent = 5;
+Q.g_affectionate_strength = 5;
+Q.g_affectionate_dissent = 10;
 
 // personalities
-Q.k_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
-Q.left_strength = 15;
-Q.left_dissent = 20;
-Q.center_strength = 25;
-Q.center_dissent = 5;
-Q.labor_strength = 30;
-Q.labor_dissent = 0;
-Q.reformist_strength = 25;
-Q.reformist_dissent = 5;
-Q.neorevisionist_strength = 5;
-Q.neorevisionist_dissent = 10;
+Q.kd_factions = ['kd_affectionate', 'kd_shy', 'kd_quiet', 'kd_reserved', 'kd_aloof'];
+Q.kd_affectionate_strength = 0;
+Q.kd_affectionate_dissent = 0;
+Q.kd_shy_strength = 10;
+Q.kd_shy_dissent = 5;
+Q.kd_quiet_strength = 50;
+Q.kd_quiet_dissent = 0;
+Q.kd_reserved_strength = 25;
+Q.kd_reserved_dissent = 5;
+Q.kd_aloof_strength = 15;
+Q.kd_aloof_dissent = 10;
 
 // personalities
-Q.cf_factions = ['left', 'center', 'labor', 'reformist', 'cf_devoted'];
-Q.left_strength = 15;
-Q.left_dissent = 20;
-Q.center_strength = 30;
-Q.center_dissent = 0;
-Q.labor_strength = 25;
-Q.labor_dissent = 5;
-Q.reformist_strength = 25;
-Q.reformist_dissent = 5;
+Q.cf_factions = ['cf_outgoing', 'cf_passive', 'cf_assertive', 'cf_devoted', 'cf_obsessive'];
+Q.cf_outgoing_strength = 20;
+Q.cf_outgoing_dissent = 10;
+Q.cf_passive_strength = 70;
+Q.cf_passive_dissent = 0;
+Q.cf_assertive_strength = 10;
+Q.cf_assertive_dissent = 10;
 Q.cf_devoted_strength = 0;
 Q.cf_devoted_dissent = 0;
+Q.cf_obsessive_strength = 0;
+Q.cf_obsessive_dissent = 0;
 
 // personalities
-Q.t_factions = ['t_', 'center', 'labor', 'reformist', 't_'];
-Q.t_strength = 15;
-Q.left_dissent = 20;
+Q.t_factions = ['t_affectionate', 't_', 't_guarded', 't_', 't_'];
+Q.t_affectionate_strength = 0;
+Q.t_affectionate_dissent = 0;
 Q.center_strength = 30;
 Q.center_dissent = 0;
-Q.labor_strength = 25;
-Q.labor_dissent = 5;
+Q.t_guarded_strength = 25;
+Q.t_guarded_dissent = 5;
 Q.reformist_strength = 25;
 Q.reformist_dissent = 5;
 Q.neorevisionist_strength = 5;
 Q.t_dissent = 10;
 
 // personalities
-Q.bb_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.d_factions = ['d_', 'd_', 'd_', 'd_protective', 'd_possessive'];
 Q.left_strength = 15;
 Q.left_dissent = 20;
 Q.center_strength = 30;
 Q.center_dissent = 0;
 Q.labor_strength = 25;
 Q.labor_dissent = 5;
-Q.reformist_strength = 25;
-Q.reformist_dissent = 5;
-Q.neorevisionist_strength = 5;
-Q.neorevisionist_dissent = 10;
+Q.d_protective_strength = 25;
+Q.d_protective_dissent = 5;
+Q.d_possessive_strength = 5;
+Q.d_possessive_dissent = 10;
 
 // personalities
 Q.y_factions = ['y_devoted', 'y_possessive', 'y_obsessive'];
@@ -179,14 +179,9 @@ Q.y_possessive_dissent = 5;
 Q.y_obsessive_strength = 10;
 Q.y_obsessive_dissent = 5;
 
-// Faction resignation
-Q.unions_independent = 0;
-Q.centrists_resign = 0;
-Q.left_split = 0;
-Q.reformists_resigned = 0;
-
-// have we discovered neorevisionism?
-Q.neorevisionism = 0;
+// hidden personalities
+Q.cf_devoted_enabled = 0;
+Q.cf_obsessive_enabled = 0;
 
 // crisis_urgency indicates how seriously the SPD is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
