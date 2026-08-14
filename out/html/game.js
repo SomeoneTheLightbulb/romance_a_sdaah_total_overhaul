@@ -20,7 +20,6 @@
 
   // the url is a link to game.json
   // test url: https://aucchen.github.io/social_democracy_mods/v0.1.json
-  // TODO; 
   window.loadMod = function(url) {
       ui.loadGame(url);
   };
@@ -33,6 +32,14 @@
     }
   };
 
+  window.showSandbox = function() {
+    if (window.dendryUI.dendryEngine.state.sceneId.startsWith('sandbox')) {
+        window.dendryUI.dendryEngine.goToScene('backSpecialScene');
+    } else {
+        window.dendryUI.dendryEngine.goToScene('sandbox');
+    }
+  };
+  
   window.showMods = function() {
     window.hideOptions();
     if (window.dendryUI.dendryEngine.state.sceneId.startsWith('mod_loader')) {
@@ -151,25 +158,36 @@
   };
 
   window.enableImages = function() {
-      window.dendryUI.show_portraits = true;
-      window.dendryUI.saveSettings();
-  };
+    window.dendryUI.show_portraits = true;
+    window.dendryUI.saveSettings();
+   };
 
   window.disableImages = function() {
-      window.dendryUI.show_portraits = false;
-      window.dendryUI.saveSettings();
-  };
+    window.dendryUI.show_portraits = false;
+    window.dendryUI.saveSettings();
+};
 
-  window.enableLightMode = function() {
-      window.dendryUI.dark_mode = false;
-      document.body.classList.remove('dark-mode');
-      window.dendryUI.saveSettings();
-  };
-  window.enableDarkMode = function() {
-      window.dendryUI.dark_mode = true;
-      document.body.classList.add('dark-mode');
-      window.dendryUI.saveSettings();
-  };
+window.enableLightMode = function() {
+    window.dendryUI.dark_mode = false;
+    document.body.classList.remove('dark-mode');
+    window.dendryUI.saveSettings();
+};
+window.enableDarkMode = function() {
+    window.dendryUI.dark_mode = true;
+    document.body.classList.add('dark-mode');
+    window.dendryUI.saveSettings();
+};
+
+window.enableGrayMode = function() {
+    window.dendryUI.gray_mode = true;
+    document.body.classList.add('gray-mode');
+    window.dendryUI.saveSettings();
+};
+window.disableGrayMode = function() {
+    window.dendryUI.gray_mode = false;
+    document.body.classList.remove('gray-mode');
+    window.dendryUI.saveSettings();
+};
 
   // populates the checkboxes in the options view
   window.populateOptions = function() {
@@ -202,6 +220,11 @@
     } else {
         $('#light_mode')[0].checked = true;
     }
+    if (window.dendryUI.gray_mode) {
+        $('#gray_on')[0].checked = true;
+    } else {
+        $('#gray_no')[0].checked = true;
+    }
   };
 
   
@@ -226,7 +249,6 @@
     }
   };
 
-  // TODO: have some code for tabbed sidebar browsing.
   window.updateSidebar = function() {
       $('#qualities').empty();
       var scene = dendryUI.game.scenes[window.statusTab];
@@ -235,9 +257,18 @@
       $('#qualities').append(dendryUI.contentToHTML.convert(displayContent));
   };
 
-  window.changeTab = function(newTab, tabId) {
-      if (tabId == 'poll_tab' && dendryUI.dendryEngine.state.qualities.historical_mode) {
-          window.alert('Polls are not available in historical mode.');
+  window.updateSidebarRight = function() {
+    $('#qualities_right').empty();
+    var scene = dendryUI.game.scenes[window.statusTabRight];
+    dendryUI.dendryEngine._runActions(scene.onArrival);
+    var displayContent = dendryUI.dendryEngine._makeDisplayContent(scene.content, true);
+    $('#qualities_right').append(dendryUI.contentToHTML.convert(displayContent));
+};
+
+  window.changeTab = function(newTab, tabId, isRight) {
+      if (tabId == 'poll_tab' && (dendryUI.dendryEngine.state.qualities.historical_mode || dendryUI.dendryEngine.state.qualities.rubicon)) {
+          if (dendryUI.dendryEngine.state.qualities.historical_mode && !dendryUI.dendryEngine.state.qualities.rubicon) window.alert('Polls are not available in historical mode.');
+          if (dendryUI.dendryEngine.state.qualities.rubicon) window.alert('Polls are not available after crossing the rubicon.');
           return;
       }
       var tabButton = document.getElementById(tabId);
@@ -246,12 +277,74 @@
         tabButtons[i].className = tabButtons[i].className.replace(' active', '');
       }
       tabButton.className += ' active';
-      window.statusTab = newTab;
-      window.updateSidebar();
+      if (isRight) {
+        window.statusTabRight = newTab;
+        window.updateSidebarRight();
+        } else {
+          window.statusTab = newTab;
+          window.updateSidebar();
+    }
   };
 
   window.onDisplayContent = function() {
       window.updateSidebar();
+      window.updateSidebarRight();
+  };
+
+  window.toggleDem = function toggleDemographicTable() {
+      const resultsDiv = document.getElementById('results');
+      // Toggle display between 'none' and 'block'
+      if (resultsDiv.style.display === 'none' || resultsDiv.style.display === '') {
+          resultsDiv.style.display = 'block'; // or 'table' for the table specifically
+      } else {
+          resultsDiv.style.display = 'none';
+      }
+  };
+  window.toggleGraph = function toggleGraph() {
+      const svgElement = document.getElementById('party_support_history');
+      if (svgElement.style.display === 'none' || svgElement.style.display === '') {
+          svgElement.style.display = 'block';
+      } else {
+          svgElement.style.display = 'none';
+      }
+  };
+  window.toggleElectionGraph = function toggleElectionGraph() {
+      const svgElement = document.getElementById('election_history');
+      if (svgElement.style.display === 'none' || svgElement.style.display === '') {
+          svgElement.style.display = 'block';
+      } else {
+          svgElement.style.display = 'none';
+      }
+  };
+  window.toggleNews = function toggleNews() {
+      const elements = document.querySelectorAll('.dnvp');
+      const elements2 = document.querySelectorAll('.other');
+      const button = document.getElementById('news_tab');
+
+      if (!button) {
+          console.error('Button with id "news_tab" not found.');
+          return;
+      }
+
+      elements.forEach(function (element) {
+          if (element.style.display !== 'block') {
+              element.style.display = 'block';
+              button.innerHTML = "View Other News";
+          } else {
+              element.style.display = 'none';
+              button.innerHTML = "View Right-Wing News";
+          }
+      });
+
+      elements2.forEach(function (element) {
+          if (element.style.display !== 'none') {
+              element.style.display = 'none';
+          } else {
+              element.style.display = 'block';
+          }
+      });
+
+      button.style.backgroundColor = '#dddddd';
   };
 
   /*
@@ -288,6 +381,7 @@
 
   window.justLoaded = true;
   window.statusTab = "status";
+  window.statusTabRight = "status_right";
   window.dendryModifyUI = main;
   console.log("Modifying stats: see dendryUI.dendryEngine.state.qualities");
 
@@ -312,7 +406,7 @@
   }
 
   window.onload = function() {
-    window.dendryUI.loadSettings({show_portraits: false});
+    window.dendryUI.loadSettings({show_portraits: true});
     if (window.dendryUI.dark_mode) {
         document.body.classList.add('dark-mode');
     }
@@ -323,7 +417,7 @@
         document.getElementById("stats_sidebar").setAttribute("style", "font-size: " + sidebar_fs + "em;");
     }
     document.getElementById('font_size_value').textContent = window.dendryUI.font_size.toFixed(1) + "em";
-    window.pinnedCardsDescription = "Advisor cards - actions are only usable once per 6 months.";
+    window.pinnedCardsDescription = "Personality cards - actions are only usable once per 6 turns.";
   };
 
 }());

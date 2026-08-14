@@ -6,12 +6,12 @@ go-to: post_event if started = 1; start_menu if started = 0
 new-page: true
 go-to: start_menu_2
 
-= Social Democracy: An Alternate History
+= Romance: A SDAAH Mod
 
 @start_menu_2
 
 - @start: Start game
-- @election_simulation: Election simulation
+- @mod_info: Mod Information
 - @credits: Credits
 - @game_over.achievements
 
@@ -21,36 +21,92 @@ on-arrival: {!
 Q.started = 1;
 // time elapsed (in months)
 Q.time = 1;
-Q.year = 1928;
+Q.year = 1;
 Q.month = 1;
 Q.week = 1;
 Q.day = 1;
-// how many actions have been taken this month?
+
 Q.month_actions = 0;
+Q.week_actions = 0;
 Q.day_actions = 0;
 
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
 Q.difficulty = 0;
 Q.historical_mode = 0;
+Q.player_name = "N/A";
+Q.player = "cf";
+Q.player_name_map = {"o": "Menshevik", "g": "Bolshevik", "k": "SR", "cf": "Kadet", "t": "Kadet", "bb": "Kadet", "y": "Kadet"};
+Q.o_is_player = 0;
+Q.g_is_player = 0;
+Q.k_is_player = 0;
+Q.cf_is_player = 1;
+Q.t_is_player = 0;
+Q.bb_is_player = 0;
+Q.y_is_player = 0;
+
+// multiplayer stuff, imported from Petrograd
+Q.current_player = 1;
+Q.n_players = 1;
+// the player ID of the next player
+Q.next_player = 0;
+
+Q.player1_character = "cf";
+Q.player2_character = "";
+Q.player3_character = "";
+Q.player4_character = "";
+Q.player5_character = "";
+Q.player6_character = "";
+Q.player7_character = "";
+
+// time i guess
+Q.o_resources = 2;
+Q.g_resources = 2;
+Q.k_resources = 2;
+Q.cf_resources = 2;
+Q.t_resources = 2;
+Q.bb_resources = 2;
+Q.y_resources = 3;
+// resting phase, determines time regen
+Q.o_dues = 2;
+Q.g_dues = 2;
+Q.k_dues = 2;
+Q.cf_dues = 2;
+Q.t_dues = 2;
+Q.bb_dues = 2;
+Q.y_dues = 3;
+
 // old demographics
 Q.old_demographics = 0;
 // use decimals for reichstag seats
 // TODO: not yet implemented
 Q.use_decimals = 1;
 
-// party resources
-Q.resources = 2;
-// party dues
-Q.dues = 2;
+// player's internal state
+// dissent is effectiveness. more dissent reduces effectiveness.
+Q.h_dissent = 0.05;
+Q.h_dissent_percent = 5;
+Q.g_dissent = 0.05;
+Q.g_dissent_percent = 5;
+Q.k_dissent = 0.05;
+Q.k_dissent_percent = 5;
+Q.cf_dissent = 0.05;
+Q.cf_dissent_percent = 5;
+Q.t_dissent = 0.05;
+Q.t_dissent_percent = 5;
+Q.bb_dissent = 0.05;
+Q.bb_dissent_percent = 5;
+Q.y_dissent = 0.05;
+Q.y_dissent_percent = 5;
 
-// the state of the party
-// overall dissent reduces every increase in party support.
-Q.dissent = 0.05;
-Q.dissent_percent = 5;
+// personalities
+Q.o_factions = ['o_', 'o_',];
+Q.left_strength = 65;
+Q.left_dissent = 20;
+Q.center_strength = 35;
+Q.center_dissent = 0;
 
-// factions
-Q.factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
-// should this be normalized to 100%?
+// personalities
+Q.g_factions = ['g_', 'g_', 'labor', 'reformist', 'neorevisionist'];
 Q.left_strength = 15;
 Q.left_dissent = 20;
 Q.center_strength = 30;
@@ -61,6 +117,67 @@ Q.reformist_strength = 25;
 Q.reformist_dissent = 5;
 Q.neorevisionist_strength = 5;
 Q.neorevisionist_dissent = 10;
+
+// personalities
+Q.k_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.left_strength = 15;
+Q.left_dissent = 20;
+Q.center_strength = 25;
+Q.center_dissent = 5;
+Q.labor_strength = 30;
+Q.labor_dissent = 0;
+Q.reformist_strength = 25;
+Q.reformist_dissent = 5;
+Q.neorevisionist_strength = 5;
+Q.neorevisionist_dissent = 10;
+
+// personalities
+Q.cf_factions = ['left', 'center', 'labor', 'reformist', 'cf_devoted'];
+Q.left_strength = 15;
+Q.left_dissent = 20;
+Q.center_strength = 30;
+Q.center_dissent = 0;
+Q.labor_strength = 25;
+Q.labor_dissent = 5;
+Q.reformist_strength = 25;
+Q.reformist_dissent = 5;
+Q.cf_devoted_strength = 0;
+Q.cf_devoted_dissent = 0;
+
+// personalities
+Q.t_factions = ['t_', 'center', 'labor', 'reformist', 't_'];
+Q.t_strength = 15;
+Q.left_dissent = 20;
+Q.center_strength = 30;
+Q.center_dissent = 0;
+Q.labor_strength = 25;
+Q.labor_dissent = 5;
+Q.reformist_strength = 25;
+Q.reformist_dissent = 5;
+Q.neorevisionist_strength = 5;
+Q.t_dissent = 10;
+
+// personalities
+Q.bb_factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.left_strength = 15;
+Q.left_dissent = 20;
+Q.center_strength = 30;
+Q.center_dissent = 0;
+Q.labor_strength = 25;
+Q.labor_dissent = 5;
+Q.reformist_strength = 25;
+Q.reformist_dissent = 5;
+Q.neorevisionist_strength = 5;
+Q.neorevisionist_dissent = 10;
+
+// personalities
+Q.y_factions = ['y_devoted', 'y_possessive', 'y_obsessive'];
+Q.y_devoted_strength = 65;
+Q.y_devoted_dissent = 0;
+Q.y_possessive_strength = 15;
+Q.y_possessive_dissent = 5;
+Q.y_obsessive_strength = 10;
+Q.y_obsessive_dissent = 5;
 
 // Faction resignation
 Q.unions_independent = 0;
@@ -103,76 +220,64 @@ Q.iron_front_formed = 0;
 // people's party support
 Q.peoples_party_support = 0;
 
-// organizations
+// interpersonal relations
+Q.o_g_relation = 30;
+Q.o_k_relation = 10;
+Q.o_cf_relation = 10;
+Q.o_t_relation = 0;
+Q.o_bb_relation = 0;
+Q.o_y_relation = 0;
 
-// inter-party relations, the dnvp and nsdap analogues are supposed to be invariably hostile.
-Q.kpd_relation = 25;
-Q.z_relation = 50;
-Q.ddp_relation = 60;
-Q.dvp_relation = 35;
-Q.dnvp_relation = 10;
-Q.nsdap_relation = 0;
+Q.g_o_relation = 30;
+Q.g_cf_relation = 45;
+Q.g_k_relation = 55;
+Q.g_t_relation = 25;
+Q.g_bb_relation = 10;
+Q.g_y_relation = 0;
 
-// Leaders, perhaps leader can be names, while party leaders their personalities?
-// alternative is the Conciliators as party leader
-Q.kpd_leader = "Thälmann";
-Q.kpd_party_leader = "Thälmann";
-// party leader - can be Ludwig Kaas, Joseph Joos, or Adam Stegerwald after the 1928 December conference. Joos will be most friendly to the SPD.
-Q.z_leader = "Brüning";
-Q.z_party_leader = "Marx";
-// missing
-Q.ddp_leader = "N/A";
-Q.ddp_party_leader = "N/A";
-Q.dvp_leader = "N/A";
-Q.dvp_party_leader = "N/A";
-Q.dnvp_leader = "N/A";
-Q.dnvp_party_leader = "N/A";
-Q.nsdap_leader = "Hitler";
-Q.nsdap_party_leader = "N/A";
+Q.k_o_relation = 10;
+Q.k_g_relation = 55;
+Q.k_cf_relation = 55;
+Q.k_t_relation = 60;
+Q.k_bb_relation = 25;
+Q.k_y_relation = 0;
 
-// relationship with the president, I think the president, or the love interest in this case, should be constant imo in a romance game
-Q.hindenburg_relation = 25;
-// whether or not the president can dismiss the government.
-Q.hindenburg_enabled = 0;
+Q.cf_o_relation = 10;
+Q.cf_g_relation = 45;
+Q.cf_k_relation = 55;
+Q.cf_t_relation = 50;
+Q.cf_bb_relation = 20;
+Q.cf_y_relation = 10;
 
+Q.t_o_relation = 0;
+Q.t_g_relation = 25;
+Q.t_k_relation = 60;
+Q.t_cf_relation = 50;
+Q.t_bb_relation = 50;
+Q.t_y_relation = 10;
 
-// Does the SPD lead in Prussia?
-Q.spd_prussia = 1;
-// Options: spd, z, dnvp, papen, nsdap
-Q.prussian_government = "SPD";
+Q.bb_o_relation = 0;
+Q.bb_g_relation = 10;
+Q.bb_k_relation = 25;
+Q.bb_cf_relation = 20;
+Q.bb_t_relation = 50;
+Q.bb_y_relation = 25;
 
-// The array of forces - paramilitary groups
-// Number of members in 1928 (in thousands)
-// Reichsbanner, stahlhelm, SA, rotfrontkämpferbund
-Q.rb_strength = 2000;
-Q.rb_militancy = 0.01;
-Q.women_in_rb = 0;
-Q.rb_banned = 0;
-Q.sh_strength = 500;
-Q.sh_militancy = 0.5;
-Q.sh_banned = 0;
-Q.sh_banned_prussia = 0;
-Q.sa_strength = 80;
-Q.sa_militancy = 0.5;
-Q.sa_banned = 0;
-Q.sa_banned_prussia = 0;
-Q.rfb_strength = 130;
-Q.rfb_militancy = 0.5;
-Q.rfb_banned = 0;
-Q.rfb_banned_prussia = 0;
+Q.y_o_relation = 0;
+Q.y_g_relation = 0;
+Q.y_k_relation = 0;
+Q.y_cf_relation = 10;
+Q.y_t_relation = 10;
+Q.y_bb_relation = 25;
 
-Q.interior_police_strength = 50;
-Q.interior_police_militancy = 1;
-Q.interior_police_loyalty = 0.45;
-
-Q.prussian_police_strength = 90;
-Q.prussian_police_militancy = 1;
-Q.prussian_police_loyalty = 0.5;
-
-// strength includes actual military and de facto reserves?
-Q.reichswehr_strength = 100;
-Q.reichswehr_militancy = 5;
-Q.reichswehr_loyalty = 0.2;
+// relationship with the love interest
+Q.o_love_interest_relation = 0;
+Q.g_love_interest_relation = 10;
+Q.k_love_interest_relation = 10;
+Q.cf_love_interest_relation = 25;
+Q.t_love_interest_relation = 5;
+Q.bb_love_interest_relation = 5;
+Q.y_love_interest_relation = 0;
 
 // The state of the country
 
@@ -186,17 +291,6 @@ Q.socialism = 40;
 Q.pro_republic = 59;
 
 Q.emergency_rule = 0;
-
-// minimum percentage of votes to be represented in the Reichstag
-Q.electoral_threshold = 0;
-// constitutional reform level
-Q.constitutional_reform = 0;
-// constructive vote of no confidence
-Q.constructive_vonc = 0;
-// reduction in presidential powers
-Q.presidential_powers = 0;
-// allows banning of non-constitutional parties
-Q.constitutional_protection = 0;
 
 // pretty sure this is just a game over, is it not?
 Q.spd_banned = 0;
@@ -236,18 +330,11 @@ Q.economic_growth = 4.4;
 // economic expansion timer
 Q.economic_expansion = 0;
 
-// quality of life (as % of 1928 - currently unused - should be welfare-adjusted.)
-Q.workers_qol = 100;
-Q.rural_qol = 100;
-Q.unemployed_qol = 100;
-Q.old_middle_qol = 100;
-Q.new_middle_qol = 100;
-
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'youth'];
-Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
+Q.parties = ['kpd', 'spd', 'ddp', 'z', 'dvp', 'dnvp', 'nsdap', 'other_left', 'other_right', 'other'];
 
 // TODO: add 'sapd' later on
-Q.sapd_formed = 0;
+Q.others_split = 0;
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
@@ -259,6 +346,8 @@ Q.workers_dvp = 0;
 Q.workers_dnvp = 6;
 Q.workers_nsdap = 0;
 Q.workers_other = 10;
+Q.workers_other_left = 0;
+Q.workers_other_right = 0;
 
 Q.old_middle_spd = 8;
 Q.old_middle_kpd = 1;
@@ -268,6 +357,8 @@ Q.old_middle_dvp = 22;
 Q.old_middle_dnvp = 10;
 Q.old_middle_nsdap = 4;
 Q.old_middle_other = 22;
+Q.old_middle_other_left = 0;
+Q.old_middle_other_right = 0;
 
 Q.new_middle_spd = 4;
 Q.new_middle_kpd = 0;
@@ -277,6 +368,8 @@ Q.new_middle_dvp = 27;
 Q.new_middle_dnvp = 24;
 Q.new_middle_nsdap = 9;
 Q.new_middle_other = 20;
+Q.new_middle_other_left = 0;
+Q.new_middle_other_right = 0;
 
 Q.rural_spd = 9;
 Q.rural_kpd = 0;
@@ -286,6 +379,8 @@ Q.rural_dvp = 15;
 Q.rural_dnvp = 46;
 Q.rural_nsdap = 3;
 Q.rural_other = 16;
+Q.rural_other_left = 0;
+Q.rural_other_right = 0;
 
 Q.unemployed_spd = 21;
 Q.unemployed_kpd = 50;
@@ -295,6 +390,8 @@ Q.unemployed_dvp = 0;
 Q.unemployed_dnvp = 4;
 Q.unemployed_nsdap = 13;
 Q.unemployed_other = 7;
+Q.unemployed_other_left = 0;
+Q.unemployed_other_right = 0;
 
 Q.catholics_spd = 21;
 Q.catholics_kpd = 2;
@@ -304,6 +401,8 @@ Q.catholics_dvp = 5;
 Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 0;
 Q.catholics_other = 16;
+Q.catholics_other_left = 0;
+Q.catholics_other_right = 0;
 
 Q.youth_spd = 38;
 Q.youth_kpd = 36;
@@ -313,6 +412,8 @@ Q.youth_dvp = 0;
 Q.youth_dnvp = 5;
 Q.youth_nsdap = 7.5;
 Q.youth_other = 8.5;
+Q.youth_other_left = 0;
+Q.youth_other_right = 0;
 
 // Current Reichstag composition
 // % of Reichstag in Jan 1928
@@ -405,8 +506,6 @@ Q.spd_toleration = 0;
 Q.minority_government = 0;
 
 // ministries - which parties control the ministries?
-// starting with the 4th Marx cabinet https://en.wikipedia.org/wiki/Fourth_Marx_cabinet
-// is the agricultural ministry useful at all?
 Q.foreign_minister = 'Streseman';
 Q.foreign_minister_party = 'DVP';
 Q.interior_minister = 'von Keudell';
@@ -568,30 +667,19 @@ Q.march_on_berlin_timer = 0;
 
 // all the initial advisors are centrists.
 Q.wels_advisor = 1; // Otto Wels
-Q.wels_dead = 0;
 Q.muller_advisor = 1; // Hermann Müller
-Q.muller_dead = 0;
-// okay I know Arthur Crispien was a leader irl but i couldn't find much interesting about him...
 Q.crispien_advisor = 0; // Arthur Crispien
-Q.crispien_dead = 0;
 Q.hilferding_advisor = 1; // Rudolf Hilferding
-Q.hilferding_dead = 0;
 
 // left advisors
 Q.sender_advisor = 0; // Toni Sender
-Q.sender_dead = 0;
 Q.levi_advisor = 0; // Paul Levi
-Q.levi_dead = 0;
 Q.rosenfeld_advisor = 0; // Kurt Rosenfeld
-Q.rosenfeld_advisor = 0;
 Q.seydewitz_advisor = 0; // Max Seydewitz
-Q.seydewitz_dead = 0;
 
 // centrist alternate advisors
 Q.pfulf_advisor = 0; // Antonie Pfülf
-Q.pfulf_dead = 0;
 Q.breitscheid_advisor = 0; // Rudolf Breitscheid
-Q.breitscheid_dead = 0;
 
 // Reformist advisors
 Q.severing_advisor = 0; // Carl Severing
@@ -626,65 +714,66 @@ This is a game of alternate history. While historical accuracy is a major concer
 
 For more information on the politics and government of the German Republic, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of this information.
 
-- @1928_easy: Begin (easy difficulty)
-- @1928_main: Begin (normal difficulty)
-- @1928_hard: Begin (hard difficulty)
-- @1928_historical: Begin (historical mode)
+- @1928_easy: Begin (Easy difficulty)
+- @1928_normal: Begin (Normal difficulty)
+- @1928_hard: Begin (Hard difficulty)
+- @1928_very_hard: Begin (Very Hard difficulty)
 
 @1928_easy
-on-arrival: {!
-difficulty = -1;
-resources = 4;
-dues = 3;
-rb_strength = 2500;
-kpd_relation = 29;
-z_relation = 54;
-dvp_relation = 49;
-budget = 5;
-!}
-go-to: 1928_main
+on-arrival: difficulty = 1; resources = 4; dues = 3; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; budget = 5
+go-to: player_selection
+
+Select a character:
+
+@1928_normal
+on-arrival: difficulty = 2; resources = 4; dues = 3; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; budget = 5
+go-to: player_selection
+
+Select a character:
 
 @1928_hard
-on-arrival: {!
-difficulty = 1;
-resources = 0;
-dues = 1;
-rb_strength = 1000;
-reformist_dissent = 25;
-left_dissent = 30;
-labor_dissent = 25;
-center_dissent = 25;
-z_relation = 41;
-kpd_relation = 16;
-dvp_relation = 31;
-budget = 3;
-!}
+on-arrival: difficulty = 3; resources = 0; dues = 1; rb_strength = 1000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; budget = 3;
+go-to: player_selection
+
+Select a character:
+
+@1928_very_hard
+subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
+on-arrival: difficulty = 4; historical_mode = 1; resources = 2; dues = 1; rb_strength = 2000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; budget = 2; this.state.disableSaves = true;
+go-to: player_selection
+
+Select a character:
+
+@player_selection
+
+- @character1
+- @character2
+- @character3
+- @character4
+- @character5
+- @character6
+- @character7
+
+@character1
+title: Name
+choose-if: achievement_game_completed
+unavailable-subtitle: Complete the game as character2 first.
+
+**Name** - Description.
+
+- @character1_confirmed: Yes, I am Character1!
+- @player_selection: No, select a different character.
+
+@character1_confirmed
+on-arrival: player_party_name = "Bolshevik"; player_party = "b"; b_is_player = 1; m_is_player = 0; player_in_soviet = 1; player_in_exco = 0; player_in_gov = 0;
 go-to: 1928_main
 
-@1928_historical
-subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
-on-arrival: {!
-Q.difficulty = 2;
-Q.historical_mode = 1;
-Q.resources = 2;
-Q.dues = 1;
-Q.rb_strength = 2000;
-Q.reformist_dissent = 25;
-Q.left_dissent = 30;
-Q.labor_dissent = 25;
-Q.center_dissent = 25;
-Q.z_relation = 41;
-Q.kpd_relation = 16;
-Q.dvp_relation = 31;
-Q.budget = 2;
-this.state.disableSaves = true;
-!}
-go-to: 1928_main
+
 
 @1928_main
 audio: shuffle music/1928_1930/Fruhlingslied.mp3 music/1928_1930/AufHohenBergen.mp3 music/1928_1930/LiedDerPompadour.mp3 music/1928_1930/FrauleinWieKannManNurSoTreuSein.mp3 music/1928_1930/UOkenecka.mp3 music/1928_1933/DerLindenbaum.mp3 music/1928_1933/ZurSonneZurFreiheit.mp3 music/1928_1933/ArbeiterMarseillaise.mp3 music/1928_1933/WannWirSchreitenSeitAnSeit.mp3 music/1928_1933/DieInternationale.mp3 music/1928_1933/SozialistenMarsch.mp3 music/1928_1930_Petrograd/AndanteCantabileNormal.mp3 music/1928_1930_Petrograd/AyUchniem.mp3 music/1928_1930_Petrograd/Kalinka.mp3 music/1928_1930_Petrograd/LongingForOurCountry.mp3 music/1928_1930_Petrograd/SwetitMiesatz.mp3 music/1928_1933_Petrograd/Dubinushka.mp3 music/1928_1933_Petrograd/OdessaMama.mp3
 new-page: true
-go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
+go-to: main if difficulty >= 2; main.main_easy if difficulty = 1
 
 = 1928
 
