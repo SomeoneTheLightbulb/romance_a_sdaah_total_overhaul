@@ -35,7 +35,7 @@ Q.difficulty = 0;
 Q.historical_mode = 0;
 Q.player_name = "N/A";
 Q.player = "cf";
-Q.player_name_map = {"h": "Menshevik", "g": "Bolshevik", "kd": "SR", "cf": "Kadet", "t": "Kadet", "d": "Kadet", "y": "Kadet"};
+Q.player_name_map = {"h": "N/A", "g": "N/A", "kd": "N/A", "cf": "N/A", "t": "N/A", "d": "N/A", "y": "N/A"};
 Q.h_is_player = 0;
 Q.g_is_player = 0;
 Q.k_is_player = 0;
@@ -81,7 +81,7 @@ Q.old_demographics = 0;
 // TODO: not yet implemented
 Q.use_decimals = 1;
 
-// player's internal state
+// player internal state
 // dissent is effectiveness. more dissent reduces effectiveness.
 Q.h_dissent = 0.05;
 Q.h_dissent_percent = 5;
@@ -99,11 +99,11 @@ Q.y_dissent = 0.05;
 Q.y_dissent_percent = 5;
 
 // personalities
-Q.h_factions = ['h_', 'h_', 'h_'];
-Q.left_strength = 65;
-Q.left_dissent = 20;
-Q.center_strength = 35;
-Q.center_dissent = 0;
+Q.h_factions = ['h_domineering', 'h_outgoing'];
+Q.h_domineering_strength = 65;
+Q.h_domineering_dissent = 0;
+Q.h_outgoing_strength = 35;
+Q.h_outgoing_dissent = 20;
 
 // personalities
 Q.g_factions = ['g_energetic', 'g_outgoing', 'g_cheerful', 'g_friendly', 'g_affectionate'];
@@ -145,26 +145,26 @@ Q.cf_obsessive_strength = 0;
 Q.cf_obsessive_dissent = 0;
 
 // personalities
-Q.t_factions = ['t_affectionate', 't_', 't_guarded', 't_', 't_'];
+Q.t_factions = ['t_affectionate', 't_comfortable', 't_guarded', 't_committed', 't_devoted'];
 Q.t_affectionate_strength = 0;
 Q.t_affectionate_dissent = 0;
-Q.center_strength = 30;
-Q.center_dissent = 0;
+Q.t_comfortable_strength = 30;
+Q.t_comfortable_dissent = 0;
 Q.t_guarded_strength = 25;
 Q.t_guarded_dissent = 5;
-Q.reformist_strength = 25;
-Q.reformist_dissent = 5;
-Q.neorevisionist_strength = 5;
-Q.t_dissent = 10;
+Q.t_committed_strength = 25;
+Q.t_committed_dissent = 5;
+Q.t_devoted_strength = 5;
+Q.t_devoted_dissent = 10;
 
 // personalities
-Q.d_factions = ['d_', 'd_', 'd_', 'd_protective', 'd_possessive'];
-Q.left_strength = 15;
-Q.left_dissent = 20;
-Q.center_strength = 30;
-Q.center_dissent = 0;
-Q.labor_strength = 25;
-Q.labor_dissent = 5;
+Q.d_factions = ['d_fond', 'd_softened', 'd_aloof', 'd_protective', 'd_possessive'];
+Q.d_fond_strength = 15;
+Q.d_fond_dissent = 20;
+Q.d_softened_strength = 30;
+Q.d_softened_dissent = 0;
+Q.d_aloof_strength = 25;
+Q.d_aloof_dissent = 5;
 Q.d_protective_strength = 25;
 Q.d_protective_dissent = 5;
 Q.d_possessive_strength = 5;
@@ -179,7 +179,7 @@ Q.y_possessive_dissent = 5;
 Q.y_obsessive_strength = 10;
 Q.y_obsessive_dissent = 5;
 
-// hidden personalities
+// hidden personalities, just retroactively change this as we branch out to other characters
 Q.cf_devoted_enabled = 0;
 Q.cf_obsessive_enabled = 0;
 
@@ -278,11 +278,11 @@ Q.y_love_interest_relation = 0;
 
 // popular opinion
 // national ideology - on a binary scale
-// nationalism vs internationalism or pacifism or non-nationalism
-Q.nationalism = 60;
+// intimacy benefits the right
+Q.intimacy = 60;
 // socialism vs capitalism
 Q.socialism = 40;
-// pro-republic vs anti-republic
+// how close the story is to a conventional vn
 Q.pro_republic = 59;
 
 Q.emergency_rule = 0;
@@ -310,7 +310,6 @@ Q.old_middle = 18;
 Q.new_middle = 21;
 Q.rural = 24;
 Q.unemployed = 12;
-Q.youth = 27;
 Q.catholics = 30;
 
 // income for industrial workers in reichsmarks, not sure if this is used anywhere
@@ -325,7 +324,7 @@ Q.economic_growth = 4.4;
 // economic expansion timer
 Q.economic_expansion = 0;
 
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'youth'];
+Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
 Q.parties = ['kpd', 'spd', 'ddp', 'z', 'dvp', 'dnvp', 'nsdap', 'other_left', 'other_right', 'other'];
 
 // TODO: add 'sapd' later on
@@ -399,23 +398,8 @@ Q.catholics_other = 16;
 Q.catholics_other_left = 0;
 Q.catholics_other_right = 0;
 
-Q.youth_spd = 38;
-Q.youth_kpd = 36;
-Q.youth_z = 3;
-Q.youth_ddp = 1;
-Q.youth_dvp = 0;
-Q.youth_dnvp = 5;
-Q.youth_nsdap = 7.5;
-Q.youth_other = 8.5;
-Q.youth_other_left = 0;
-Q.youth_other_right = 0;
-
 // Current Reichstag composition
 // % of Reichstag in Jan 1928
-// source: wikipedia
-// note: the Z figures also include the BVP (Bavarian people's party)
-// since they were ideologically similar, but they were separate parties.
-// They did not have a CDU/CSU-style relationship.
 Q.spd_r = 26;
 Q.kpd_r = 9;
 Q.z_r = 17;
@@ -424,6 +408,8 @@ Q.dvp_r = 10;
 Q.dnvp_r = 20;
 Q.nsdap_r = 3;
 Q.other_r = 9;
+Q.other_left_r = 0;
+Q.other_right_r = 0;
 
 // diff from prev
 Q.old_spd_r = 26;
@@ -434,10 +420,8 @@ Q.old_dvp_r = 10;
 Q.old_dnvp_r = 20;
 Q.old_nsdap_r = 3;
 Q.old_other_r = 9;
-
-// sapd isn't formed yet, but it may be formed
-Q.sapd_r = 0;
-Q.old_sapd_r = 0;
+Q.old_other_left_r = 0;
+Q.old_other_right_r = 0;
 
 // this is what the player will see as their names
 Q.ddp_name = "DDP";
@@ -470,24 +454,24 @@ Q.kpd_in_government = 0;
 Q.nsdap_in_government = 0;
 
 // woah its coalitions
-// Right coalition = Z + DVP + DNVP
-Q.in_right_coalition = 0;
+// left coalition = SPD + KPD + left-splinters
+Q.in_left_front = 0;
+// Popular front = SPD + KPD + Z + DDP
+Q.in_popular_front = 0;
 // Weimar coalition = SPD + Z + DDP
 Q.in_weimar_coalition = 0;
 // Grand coalition = SPD + Z + BVP + DDP + DVP
 // also includes the "new grand coalition" of SPD + Z + BVP + DDP + DVP + Others
 Q.in_grand_coalition = 0;
-// Popular front = SPD + KPD + Z + DDP
-Q.in_popular_front = 0;
-// left coalition = SPD + KPD + left-splinters
-Q.in_left_front = 0;
+// Right coalition = Z + DVP + DNVP
+Q.in_right_coalition = 0;
 // emergency government containing the SPD: only president Braun can do this.
 Q.in_emergency_government = 0;
-Q.in_spd_majority = 0;
 Q.grand_coalition_failed = 0;
 // if the SPD is ruling as part of a minority government
 Q.in_minority_government = 0;
-// national unity governmet
+// special cases
+Q.in_spd_majority = 0;
 
 // if you're in a coalition, this is an incremental counter for how many times dissent has happened from the right.
 Q.coalition_dissent = 0;
@@ -693,7 +677,7 @@ Q.mierendorff_advisor = 0; // Carlo Mierendorf (post-1930)
 Q.leber_advisor = 0; // Julius Leber (post-1930)
 Q.schumacher_advisor = 0; // Kurt Schumacher (post-1930)
 
-// Nonfactional advisors
+// Nonfactional advisors. Maybe we can make them universal to all characters
 Q.hirschfeld_advisor = 0; // Magnus Hirschfeld
 Q.radbruch_advisor = 0; // Gustav Radbruch
 Q.stampfer_advisor = 0; // Friedrich Stampfer
@@ -760,7 +744,7 @@ unavailable-subtitle: Complete the game as character2 first.
 - @player_selection: No, select a different character.
 
 @character1_confirmed
-on-arrival: player_party_name = "Bolshevik"; player_party = "b"; b_is_player = 1; m_is_player = 0; player_in_soviet = 1; player_in_exco = 0; player_in_gov = 0;
+on-arrival: player_party_name = "N/A"; player_party = "h"; h_is_player = 1; cf_is_player = 0
 go-to: 1928_main
 
 
