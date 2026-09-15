@@ -98,27 +98,33 @@ Q.d_dissent_percent = 5;
 Q.y_dissent = 0.05;
 Q.y_dissent_percent = 5;
 
-// personalities
+// himidere personalities
 Q.h_factions = ['h_domineering', 'h_outgoing'];
 Q.h_domineering_strength = 65;
 Q.h_domineering_dissent = 0;
 Q.h_outgoing_strength = 35;
 Q.h_outgoing_dissent = 20;
 
-// personalities
-Q.g_factions = ['g_energetic', 'g_outgoing', 'g_cheerful', 'g_friendly', 'g_affectionate'];
+// genki personalities
+Q.g_factions = ['g_energetic', 'g_outgoing', 'g_cheerful', 'g_friendly', 'g_affectionate', 'g_devoted'];
+// first impressions, friendly to most but not really focused on a specific person (yet).
 Q.g_energetic_strength = 15;
 Q.g_energetic_dissent = 20;
 Q.g_outgoing_strength = 30;
 Q.g_outgoing_dissent = 0;
+// warthm but distant, kinda like a close accquaintance.
 Q.g_cheerful_strength = 25;
 Q.g_cheerful_dissent = 5;
+// warthm & friendliness is now the right-wing of the party. this technically would be reforming capitalism but theres no other way to really structure this.
 Q.g_friendly_strength = 25;
 Q.g_friendly_dissent = 5;
 Q.g_affectionate_strength = 5;
 Q.g_affectionate_dissent = 10;
+// lmao social patriots. so does this mean jealousy is social fascism? food for thought.
+Q.g_devoted_strength = 0;
+Q.g_devoted_dissent = 0;
 
-// personalities
+// kuudere & dandere personalities, both meshed into one character
 Q.kd_factions = ['kd_affectionate', 'kd_shy', 'kd_quiet', 'kd_reserved', 'kd_aloof'];
 Q.kd_affectionate_strength = 0;
 Q.kd_affectionate_dissent = 0;
@@ -131,7 +137,7 @@ Q.kd_reserved_dissent = 5;
 Q.kd_aloof_strength = 15;
 Q.kd_aloof_dissent = 10;
 
-// personalities
+// childhood friend personalities
 Q.cf_factions = ['cf_outgoing', 'cf_passive', 'cf_assertive', 'cf_devoted', 'cf_obsessive'];
 Q.cf_outgoing_strength = 20;
 Q.cf_outgoing_dissent = 10;
@@ -144,7 +150,7 @@ Q.cf_devoted_dissent = 0;
 Q.cf_obsessive_strength = 0;
 Q.cf_obsessive_dissent = 0;
 
-// personalities
+// tsundere personalities
 Q.t_factions = ['t_affectionate', 't_comfortable', 't_guarded', 't_committed', 't_devoted'];
 Q.t_affectionate_strength = 0;
 Q.t_affectionate_dissent = 0;
@@ -157,7 +163,7 @@ Q.t_committed_dissent = 5;
 Q.t_devoted_strength = 5;
 Q.t_devoted_dissent = 10;
 
-// personalities
+// an odd one, otome describes this as a bad boy, but thats not universal. so delinquent personalities?
 Q.d_factions = ['d_fond', 'd_softened', 'd_aloof', 'd_protective', 'd_possessive'];
 Q.d_fond_strength = 15;
 Q.d_fond_dissent = 20;
@@ -170,7 +176,7 @@ Q.d_protective_dissent = 5;
 Q.d_possessive_strength = 5;
 Q.d_possessive_dissent = 10;
 
-// personalities
+// yandere personalities. i dont think i need to explain why theyre the furthest right lmao
 Q.y_factions = ['y_devoted', 'y_possessive', 'y_obsessive'];
 Q.y_devoted_strength = 65;
 Q.y_devoted_dissent = 0;
