@@ -45,18 +45,17 @@ Q.d_is_player = 0;
 Q.y_is_player = 0;
 
 // multiplayer stuff, imported from Petrograd
-Q.current_player = 1;
-Q.n_players = 1;
+// Q.current_player = 1;
+// Q.n_players = 1;
 // the player ID of the next player
-Q.next_player = 0;
-
-Q.player1_character = "cf";
-Q.player2_character = "";
-Q.player3_character = "";
-Q.player4_character = "";
-Q.player5_character = "";
-Q.player6_character = "";
-Q.player7_character = "";
+// Q.next_player = 0;
+// Q.player1_character = "cf";
+// Q.player2_character = "";
+// Q.player3_character = "";
+// Q.player4_character = "";
+// Q.player5_character = "";
+// Q.player6_character = "";
+// Q.player7_character = "";
 
 // time i guess
 Q.h_resources = 2;
@@ -193,12 +192,6 @@ Q.cf_obsessive_enabled = 0;
 Q.crisis_urgency = 0;
 // nazi_urgency indicates how seriously the SPD takes the nazis - scale from 0 to 10.
 Q.nazi_urgency = 0;
-// radicalization indicates how radical the SPD's rhetoric is - scale from 0 to 10.
-Q.radicalization = 0;
-// Support for Pacifism within the SPD relative to 1928
-Q.pacifism = 0;
-// Support for democratic reform within the SPD relative to 1928
-Q.democratization = 0;
 
 // Economic Plans
 // support for the left faction's nationalization plan
@@ -222,67 +215,65 @@ Q.iron_front_formed = 0;
 Q.peoples_party_support = 0;
 
 // interpersonal relations
-Q.o_g_relation = 30;
-Q.o_k_relation = 10;
-Q.o_cf_relation = 10;
-Q.o_t_relation = 0;
-Q.o_bb_relation = 0;
-Q.o_y_relation = 0;
+Q.h_g_relation = 30;
+Q.h_kd_relation = 10;
+Q.h_cf_relation = 10;
+Q.h_t_relation = 0;
+Q.h_d_relation = 0;
+Q.h_y_relation = 0;
 
-Q.g_o_relation = 30;
+Q.g_h_relation = 30;
 Q.g_cf_relation = 45;
-Q.g_k_relation = 55;
+Q.g_kd_relation = 55;
 Q.g_t_relation = 25;
-Q.g_bb_relation = 10;
+Q.g_d_relation = 10;
 Q.g_y_relation = 0;
 
-Q.k_o_relation = 10;
-Q.k_g_relation = 55;
-Q.k_cf_relation = 55;
-Q.k_t_relation = 60;
-Q.k_bb_relation = 25;
-Q.k_y_relation = 0;
+Q.kd_h_relation = 10;
+Q.kd_g_relation = 55;
+Q.kd_cf_relation = 55;
+Q.kd_t_relation = 60;
+Q.kd_d_relation = 25;
+Q.kd_y_relation = 0;
 
-Q.cf_o_relation = 10;
+Q.cf_h_relation = 10;
 Q.cf_g_relation = 45;
-Q.cf_k_relation = 55;
+Q.cf_kd_relation = 55;
 Q.cf_t_relation = 50;
-Q.cf_bb_relation = 20;
+Q.cf_d_relation = 20;
 Q.cf_y_relation = 10;
 
-Q.t_o_relation = 0;
+Q.t_h_relation = 0;
 Q.t_g_relation = 25;
-Q.t_k_relation = 60;
+Q.t_kd_relation = 60;
 Q.t_cf_relation = 50;
-Q.t_bb_relation = 50;
+Q.t_d_relation = 50;
 Q.t_y_relation = 10;
 
-Q.bb_o_relation = 0;
-Q.bb_g_relation = 10;
-Q.bb_k_relation = 25;
-Q.bb_cf_relation = 20;
-Q.bb_t_relation = 50;
-Q.bb_y_relation = 25;
+Q.d_h_relation = 0;
+Q.d_g_relation = 10;
+Q.d_kd_relation = 25;
+Q.d_cf_relation = 20;
+Q.d_t_relation = 50;
+Q.d_y_relation = 25;
 
-Q.y_o_relation = 0;
+Q.y_h_relation = 0;
 Q.y_g_relation = 0;
-Q.y_k_relation = 0;
+Q.y_kd_relation = 0;
 Q.y_cf_relation = 10;
 Q.y_t_relation = 10;
-Q.y_bb_relation = 25;
+Q.y_d_relation = 25;
 
 // relationship with the love interest
-Q.o_love_interest_relation = 0;
+Q.h_love_interest_relation = 0;
 Q.g_love_interest_relation = 10;
-Q.k_love_interest_relation = 10;
+Q.kd_love_interest_relation = 10;
 Q.cf_love_interest_relation = 25;
 Q.t_love_interest_relation = 5;
 Q.bb_love_interest_relation = 5;
 Q.y_love_interest_relation = 0;
 
-// The state of the country
-
-// popular opinion
+// The state of the story
 // national ideology - on a binary scale
 // intimacy benefits the right
 Q.intimacy = 60;
@@ -293,15 +284,14 @@ Q.pro_republic = 59;
 
 Q.emergency_rule = 0;
 
-// pretty sure this is just a game over, is it not?
-Q.spd_banned = 0;
-// whether a party has been banned/killed, except these aren't supposed to be parties.
-Q.kpd_banned = 0;
-Q.z_banned = 0;
-Q.ddp_banned = 0;
-Q.dvp_banned = 0;
-Q.dnvp_banned = 0;
-Q.nsdap_banned = 0;
+// just not gonna bother renaming yet
+Q.h_banned = 0;
+Q.g_banned = 0;
+Q.k_banned = 0;
+Q.cf_banned = 0;
+Q.t_banned = 0;
+Q.d_banned = 0;
+Q.y_banned = 0;
 
 // coups and capital strikes happen when you upset the right or the capitalists too much with your policies. they're an additional check on your policies, when purely electoral checks don't suffice.
 // when coup_progress reaches 10 or capital_strike_progress reaches 10, there's a special event that launches the coup.
@@ -311,29 +301,21 @@ Q.capital_strike_progress = 0;
 Q.budget = 4;
 
 // Proportion of different social groups
-Q.workers = 36;
-Q.old_middle = 18;
-Q.new_middle = 21;
-Q.rural = 24;
-Q.unemployed = 12;
+Q.workers = 48;
+Q.old_middle = 13;
+Q.new_middle = 14;
+Q.rural = 25;
+Q.unemployed = 8.6;
 Q.catholics = 30;
 
-// income for industrial workers in reichsmarks, not sure if this is used anywhere
-Q.income = 1600;
-
-// inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BSPDRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
 Q.inflation = 2.9;
-
-// economic growth - same source as above, Table 2 (preisbereinigt) - this is also the source for the yearly changes in the great depression.
 Q.economic_growth = 4.4;
-
-// economic expansion timer
 Q.economic_expansion = 0;
 
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
 Q.parties = ['kpd', 'spd', 'ddp', 'z', 'dvp', 'dnvp', 'nsdap', 'other_left', 'other_right', 'other'];
 
-// TODO: add 'sapd' later on
+// the others bloc break down
 Q.others_split = 0;
 
 // Support for party by social group
