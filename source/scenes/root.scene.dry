@@ -119,18 +119,21 @@ Q.g_friendly_strength = 25;
 Q.g_friendly_dissent = 5;
 Q.g_affectionate_strength = 5;
 Q.g_affectionate_dissent = 10;
-// lmao social patriots. so does this mean jealousy is social fascism? food for thought.
+// lmao social patriots. so does this mean jealousy is social fascism?
 Q.g_devoted_strength = 0;
 Q.g_devoted_dissent = 0;
 
 // kuudere & dandere personalities, both meshed into one character
 Q.kd_factions = ['kd_affectionate', 'kd_shy', 'kd_quiet', 'kd_reserved', 'kd_aloof'];
+// culmination of kuudere and dandere development
 Q.kd_affectionate_strength = 0;
 Q.kd_affectionate_dissent = 0;
+// the dandere personalities
 Q.kd_shy_strength = 10;
 Q.kd_shy_dissent = 5;
 Q.kd_quiet_strength = 50;
 Q.kd_quiet_dissent = 0;
+// the kuudere personalities
 Q.kd_reserved_strength = 25;
 Q.kd_reserved_dissent = 5;
 Q.kd_aloof_strength = 15;
@@ -138,14 +141,19 @@ Q.kd_aloof_dissent = 10;
 
 // childhood friend personalities
 Q.cf_factions = ['cf_outgoing', 'cf_passive', 'cf_assertive', 'cf_devoted', 'cf_obsessive'];
+// the left flank
 Q.cf_outgoing_strength = 20;
 Q.cf_outgoing_dissent = 10;
+// you know that stereotype of childhood friends losing due to being passive? this is that
 Q.cf_passive_strength = 70;
 Q.cf_passive_dissent = 0;
+// we're now doing things. the right flank
 Q.cf_assertive_strength = 10;
 Q.cf_assertive_dissent = 10;
+// getting a bit attached. still constitutional though
 Q.cf_devoted_strength = 0;
 Q.cf_devoted_dissent = 0;
+// insert joke about how this obsessive personality is further right-wing than anything tsundere and delinquent have
 Q.cf_obsessive_strength = 0;
 Q.cf_obsessive_dissent = 0;
 
@@ -222,47 +230,25 @@ Q.h_t_relation = 0;
 Q.h_d_relation = 0;
 Q.h_y_relation = 0;
 
-Q.g_h_relation = 30;
 Q.g_cf_relation = 45;
 Q.g_kd_relation = 55;
 Q.g_t_relation = 25;
 Q.g_d_relation = 10;
 Q.g_y_relation = 0;
 
-Q.kd_h_relation = 10;
-Q.kd_g_relation = 55;
 Q.kd_cf_relation = 55;
 Q.kd_t_relation = 60;
 Q.kd_d_relation = 25;
 Q.kd_y_relation = 0;
 
-Q.cf_h_relation = 10;
-Q.cf_g_relation = 45;
-Q.cf_kd_relation = 55;
 Q.cf_t_relation = 50;
 Q.cf_d_relation = 20;
 Q.cf_y_relation = 10;
 
-Q.t_h_relation = 0;
-Q.t_g_relation = 25;
-Q.t_kd_relation = 60;
-Q.t_cf_relation = 50;
 Q.t_d_relation = 50;
 Q.t_y_relation = 10;
 
-Q.d_h_relation = 0;
-Q.d_g_relation = 10;
-Q.d_kd_relation = 25;
-Q.d_cf_relation = 20;
-Q.d_t_relation = 50;
 Q.d_y_relation = 25;
-
-Q.y_h_relation = 0;
-Q.y_g_relation = 0;
-Q.y_kd_relation = 0;
-Q.y_cf_relation = 10;
-Q.y_t_relation = 10;
-Q.y_d_relation = 25;
 
 // relationship with the love interest
 Q.h_love_interest_relation = 0;
@@ -277,10 +263,10 @@ Q.y_love_interest_relation = 0;
 // national ideology - on a binary scale
 // intimacy benefits the right
 Q.intimacy = 60;
-// socialism vs capitalism
-Q.socialism = 40;
-// how close the story is to a conventional vn
-Q.pro_republic = 59;
+// openness benefits the left
+Q.openness = 40;
+// how close the story is to a conventional vn. benefits the conventional archetypes
+Q.normality = 59;
 
 Q.emergency_rule = 0;
 
@@ -673,76 +659,245 @@ Q.stampfer_advisor = 0; // Friedrich Stampfer
 set-bg: img/map_2.jpg
 new-page: true
 
-> *"Such a general development cannot be attributed to the false tactics of any single party or to the mistakes of individual leaders. On the contrary, the conduct of individual leaders is determined largely by the sentiments of the people as a whole. It would be erroneous, however, to regard the sentiments of the moment as reflecting the natural make-up and character of the people. They are merely the consequence of the special circumstances which have brought about this profound degradation of the entire nation."*
+> *"Quote"*
 
- - Karl Kautsky, *Hitlerism and Social Democracy*, 1934
+ - Person, *Source*, Year
 
-This is a game of alternate history. While historical accuracy is a major concern, keep in mind that this is a *game*, and that any divergence from actual events will necessarily have to involve some element of make-believe. Nevertheless, please let the author know if there are any glaring mistakes.
+This game is essentially a proof of concept with the DendryNexus engine. More specifically, this is an attempt to simulate a visual novel from the perspective of its various love interests, using preexisting mechanics from the original source game: *Social Democracy: An Alternate History*, for its gameplay.
 
-For more information on the politics and government of the German Republic, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of this information.
-
-- @1928_easy: Begin (Easy difficulty)
-- @1928_normal: Begin (Normal difficulty)
-- @1928_hard: Begin (Hard difficulty)
-- @1928_very_hard: Begin (Very Hard difficulty)
-
-@1928_easy
-on-arrival: difficulty = 1; resources = 4; dues = 3; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; budget = 5
-go-to: player_selection
+For more information on what exactly this mod is about, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of the information to understand what's going on.
 
 Select a character:
 
-@1928_normal
-on-arrival: difficulty = 2; resources = 4; dues = 3; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; budget = 5
-go-to: player_selection
+- @himidere_select
+- @genki_select
+- @dandere_select
+- @childhood_friend_select
+- @tsundere_select
+- @delinquent_select
+- @yandere_select
 
-Select a character:
-
-@1928_hard
-on-arrival: difficulty = 3; resources = 0; dues = 1; rb_strength = 1000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; budget = 3;
-go-to: player_selection
-
-Select a character:
-
-@1928_very_hard
-subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
-on-arrival: difficulty = 4; historical_mode = 1; resources = 2; dues = 1; rb_strength = 2000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; budget = 2; this.state.disableSaves = true;
-go-to: player_selection
-
-Select a character:
-
-@player_selection
-
-- @character1
-- @character2
-- @character3
-- @character4
-- @character5
-- @character6
-- @character7
-
-@character1
+// Himidere Selection
+@himidere_select
 title: Name
 choose-if: achievement_game_completed
 unavailable-subtitle: Complete the game as character2 first.
 
 **Name** - Description.
 
-- @character1_confirmed: Yes, I am Character1!
+- @himidere_confirmed: Yes, I am Character1!
 - @player_selection: No, select a different character.
 
-@character1_confirmed
+@himidere_confirmed
 on-arrival: player_party_name = "N/A"; player_party = "h"; h_is_player = 1; cf_is_player = 0
-go-to: 1928_main
+go-to: difficulty_setting_himidere
 
+@difficulty_setting_himidere
 
+- @himidere_easy: Begin (Easy difficulty)
+- @himidere_normal: Begin (Normal difficulty)
+- @himidere_hard: Begin (Hard difficulty)
+- @himidere_very_hard: Begin (Very Hard difficulty)
 
-@1928_main
+@himidere_easy
+on-arrival: difficulty = 1; h_resources = 4; h_dues = 5; h_g_relation = 33; h_kd_relation = 15; h_cf_relation = 13; budget = 5
+go-to: maingame_start
+
+@himidere_normal
+on-arrival: difficulty = 2; h_resources = 3; h_dues = 4; h_g_relation = 30; h_kd_relation = 10; h_cf_relation = 10; budget = 5
+go-to: maingame_start
+
+@himidere_hard
+on-arrival: difficulty = 3; h_resources = 2; h_dues = 3; h_domineering_dissent = 15; h_outgoing_dissent = 25; h_g_relation = 27; h_kd_relation = 8; h_cf_relation = 6; budget = 3;
+go-to: maingame_start
+
+@himidere_very_hard
+subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
+on-arrival: {!
+difficulty = 4;
+historical_mode = 1;
+h_resources = 2;
+h_dues = 3;
+h_domineering_dissent = 20;
+h_outgoing_dissent = 25;
+h_g_relation = 25;
+h_kd_relation = 8;
+h_cf_relation = 5;
+budget = 2;
+this.state.disableSaves = true;
+!}
+go-to: maingame_start
+
+// Genki Selection
+@genki_select
+title: Name
+choose-if: achievement_game_completed
+unavailable-subtitle: Complete the game as character3 first.
+
+**Name** - Description.
+
+- @genki_confirmed: Yes, I am Character2!
+- @player_selection: No, select a different character.
+
+@genki_confirmed
+on-arrival: player_party_name = "N/A"; player_party = "g"; g_is_player = 1; cf_is_player = 0
+go-to: difficulty_setting_genki
+
+@difficulty_setting_genki
+
+- @genki_easy: Begin (Easy difficulty)
+- @genki_normal: Begin (Normal difficulty)
+- @genki_hard: Begin (Hard difficulty)
+- @genki_very_hard: Begin (Very Hard difficulty)
+
+@genki_easy
+on-arrival: difficulty = 1; g_resources = 4; g_dues = 5; h_g_relation = 30; g_cf_relation = 50; g_kd_relation = 60; g_t_relation = 30; g_d_relation = 15; budget = 5
+go-to: maingame_start
+
+@genki_normal
+on-arrival: difficulty = 2; g_resources = 3; g_dues = 4; h_g_relation = 30; g_cf_relation = 45; g_kd_relation = 55; g_t_relation = 25; g_d_relation = 10; budget = 5
+go-to: maingame_start
+
+@genki_hard
+on-arrival: difficulty = 3; g_resources = 2; g_dues = 3; g_energetic_dissent = 30; g_outgoing_dissent = 25; g_cheerful_dissent = 25; g_friendly_dissent = 25; h_g_relation = 25; g_cf_relation = 40; g_kd_relation = 50; g_t_relation = 20; g_d_relation = 5; budget = 3;
+go-to: maingame_start
+
+@genki_very_hard
+subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
+on-arrival: {!
+difficulty = 4;
+historical_mode = 1;
+g_resources = 2;
+g_dues = 3;
+g_energetic_dissent = 30;
+g_outgoing_dissent = 25;
+g_cheerful_dissent = 25;
+g_friendly_dissent = 25;
+g_affectionate_dissent = 15;
+h_g_relation = 25;
+g_cf_relation = 40;
+g_kd_relation = 50;
+g_t_relation = 20;
+g_d_relation = 0;
+budget = 2;
+this.state.disableSaves = true;
+!}
+go-to: maingame_start
+
+// Kuudere/Dandere Selection
+@dandere_select
+title: Name
+choose-if: achievement_game_completed
+unavailable-subtitle: Complete the game as character3 first.
+
+**Name** - Description.
+
+- @dandere_confirmed: Yes, I am Character2!
+- @player_selection: No, select a different character.
+
+@dandere_confirmed
+on-arrival: player_party_name = "N/A"; player_party = "g"; g_is_player = 1; cf_is_player = 0
+go-to: difficulty_setting_dandere
+
+@difficulty_setting_dandere
+
+- @dandere_easy: Begin (Easy difficulty)
+- @dandere_normal: Begin (Normal difficulty)
+- @dandere_hard: Begin (Hard difficulty)
+- @dandere_very_hard: Begin (Very Hard difficulty)
+
+@dandere_easy
+on-arrival: difficulty = 1; kd_resources = 4; kd_dues = 4; h_kd_relation = 15; g_kd_relation = 60; kd_cf_relation = 60; kd_t_relation = 60; kd_d_relation = 25; budget = 5
+go-to: maingame_start
+
+@dandere_normal
+on-arrival: difficulty = 2; kd_resources = 3; kd_dues = 3; h_kd_relation = 10; g_kd_relation = 55; kd_cf_relation = 55; kd_t_relation = 60; kd_d_relation = 25; budget = 5
+go-to: maingame_start
+
+@dandere_hard
+on-arrival: difficulty = 3; kd_resources = 2; kd_dues = 2; kd_shy_dissent = 20; kd_quiet_dissent = 15; kd_reserved_dissent = 15; kd_aloof_dissent = 20; h_kd_relation = 8; g_kd_relation = 50; kd_cf_relation = 50; kd_t_relation = 55; kd_d_relation = 20; budget = 3;
+go-to: maingame_start
+
+@dandere_very_hard
+subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
+on-arrival: {!
+difficulty = 4;
+historical_mode = 1;
+kd_resources = 2;
+kd_dues = 3;
+kd_shy_dissent = 30;
+kd_quiet_dissent = 20;
+kd_reserved_dissent = 25;
+kd_aloof_dissent = 30;
+h_kd_relation = 8;
+g_kd_relation = 50;
+kd_cf_relation = 48;
+kd_t_relation = 50;
+kd_d_relation = 18;
+budget = 2;
+this.state.disableSaves = true;
+!}
+go-to: maingame_start
+
+// Childhood Friend Selection
+@childhood_friend_select
+title: Name
+
+**Name** - Description.
+
+- @childhood_friend_confirmed: Yes, I am Character2!
+- @player_selection: No, select a different character.
+
+@childhood_friend_confirmed
+on-arrival: player_party_name = "N/A"; player_party = "cf"; cf_is_player = 1
+go-to: difficulty_setting_childhood_friend
+
+@difficulty_setting_childhood_friend
+
+- @childhood_friend_easy: Begin (Easy difficulty)
+- @childhood_friend_normal: Begin (Normal difficulty)
+- @childhood_friend_hard: Begin (Hard difficulty)
+- @childhood_friend_very_hard: Begin (Very Hard difficulty)
+
+@childhood_friend_easy
+on-arrival: difficulty = 1; cf_resources = 4; cf_dues = 4; h_cf_relation = 13; g_cf_relation = 50; kd_cf_relation = 60; cf_t_relation = 55; cf_d_relation = 25; cf_y_relation = 12; budget = 5
+go-to: maingame_start
+
+@childhood_friend_normal
+on-arrival: difficulty = 2; cf_resources = 3; cf_dues = 3; h_cf_relation = 10; g_cf_relation = 45; kd_cf_relation = 55; cf_t_relation = 50; cf_d_relation = 20; cf_y_relation = 10; budget = 5
+go-to: maingame_start
+
+@childhood_friend_hard
+on-arrival: difficulty = 3; cf_resources = 2; cf_dues = 2; cf_outgoing_dissent = 25; cf_passive_dissent = 20; cf_assertive_dissent = 20; h_cf_relation = 6; g_cf_relation = 40; kd_cf_relation = 50; cf_t_relation = 45; cf_d_relation = 18; cf_y_relation = 5; budget = 3;
+go-to: maingame_start
+
+@childhood_friend_very_hard
+subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
+on-arrival: {!
+difficulty = 4;
+historical_mode = 1;
+cf_resources = 2;
+cf_dues = 2;
+cf_outgoing_dissent = 30;
+cf_passive_dissent = 25;
+cf_assertive_dissent = 20;
+h_cf_relation = 5;
+g_cf_relation = 40;
+kd_cf_relation = 48;
+cf_t_relation = 45;
+cf_d_relation = 15;
+cf_y_relation = 0;
+budget = 2;
+this.state.disableSaves = true;
+!}
+go-to: maingame_start
+
+@maingame_start
 audio: shuffle music/1928_1930/Fruhlingslied.mp3 music/1928_1930/AufHohenBergen.mp3 music/1928_1930/LiedDerPompadour.mp3 music/1928_1930/FrauleinWieKannManNurSoTreuSein.mp3 music/1928_1930/UOkenecka.mp3 music/1928_1933/DerLindenbaum.mp3 music/1928_1933/ZurSonneZurFreiheit.mp3 music/1928_1933/ArbeiterMarseillaise.mp3 music/1928_1933/WannWirSchreitenSeitAnSeit.mp3 music/1928_1933/DieInternationale.mp3 music/1928_1933/SozialistenMarsch.mp3 music/1928_1930_Petrograd/AndanteCantabileNormal.mp3 music/1928_1930_Petrograd/AyUchniem.mp3 music/1928_1930_Petrograd/Kalinka.mp3 music/1928_1930_Petrograd/LongingForOurCountry.mp3 music/1928_1930_Petrograd/SwetitMiesatz.mp3 music/1928_1933_Petrograd/Dubinushka.mp3 music/1928_1933_Petrograd/OdessaMama.mp3
 new-page: true
 go-to: main if difficulty >= 2; main.main_easy if difficulty = 1
 
-= 1928
+= First Year, Term 1
 
 It is a bright time for German democracy. After a period of struggle, inflation is finally under control, and the economy is expanding steadily. In foreign policy, we have reached agreements with the Western powers and the Soviet Union that might make genuine peace a reality. 
 
