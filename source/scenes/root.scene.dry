@@ -159,29 +159,33 @@ Q.cf_obsessive_dissent = 0;
 
 // tsundere personalities
 Q.t_factions = ['t_affectionate', 't_comfortable', 't_guarded', 't_committed', 't_devoted'];
+// its the deredere part
 Q.t_affectionate_strength = 0;
 Q.t_affectionate_dissent = 0;
-Q.t_comfortable_strength = 30;
+// getting to the deredere part
+Q.t_comfortable_strength = 10;
 Q.t_comfortable_dissent = 0;
-Q.t_guarded_strength = 25;
-Q.t_guarded_dissent = 5;
-Q.t_committed_strength = 25;
-Q.t_committed_dissent = 5;
-Q.t_devoted_strength = 5;
-Q.t_devoted_dissent = 10;
+// recognizable starting tsundere
+Q.t_guarded_strength = 60;
+Q.t_guarded_dissent = 10;
+Q.t_committed_strength = 30;
+Q.t_committed_dissent = 15;
+// no i dont like you, now why were you talking to that girl?
+Q.t_devoted_strength = 0;
+Q.t_devoted_dissent = 0;
 
 // an odd one, otome describes this as a bad boy, but thats not universal. so delinquent personalities?
 Q.d_factions = ['d_fond', 'd_softened', 'd_aloof', 'd_protective', 'd_possessive'];
-Q.d_fond_strength = 15;
-Q.d_fond_dissent = 20;
-Q.d_softened_strength = 30;
+Q.d_fond_strength = 0;
+Q.d_fond_dissent = 0;
+Q.d_softened_strength = 5;
 Q.d_softened_dissent = 0;
-Q.d_aloof_strength = 25;
+Q.d_aloof_strength = 55;
 Q.d_aloof_dissent = 5;
 Q.d_protective_strength = 25;
 Q.d_protective_dissent = 5;
-Q.d_possessive_strength = 5;
-Q.d_possessive_dissent = 10;
+Q.d_possessive_strength = 0;
+Q.d_possessive_dissent = 0;
 
 // yandere personalities. i dont think i need to explain why theyre the furthest right lmao
 Q.y_factions = ['y_devoted', 'y_possessive', 'y_obsessive'];
@@ -256,7 +260,7 @@ Q.g_love_interest_relation = 10;
 Q.kd_love_interest_relation = 10;
 Q.cf_love_interest_relation = 25;
 Q.t_love_interest_relation = 5;
-Q.bb_love_interest_relation = 5;
+Q.d_love_interest_relation = 5;
 Q.y_love_interest_relation = 0;
 
 // The state of the story
@@ -299,7 +303,7 @@ Q.economic_growth = 4.4;
 Q.economic_expansion = 0;
 
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
-Q.parties = ['kpd', 'spd', 'ddp', 'z', 'dvp', 'dnvp', 'nsdap', 'other_left', 'other_right', 'other'];
+Q.parties = ['h', 'g', 'kd', 'cf', 't', 'd', 'y', 'other_left', 'other_right', 'other'];
 
 // the others bloc break down
 Q.others_split = 0;
