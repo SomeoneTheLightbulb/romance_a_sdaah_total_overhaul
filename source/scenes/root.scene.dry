@@ -33,12 +33,17 @@ Q.day_actions = 0;
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
 Q.difficulty = 0;
 Q.historical_mode = 0;
-Q.player_name = "N/A";
 Q.player = "cf";
-Q.player_name_map = {"h": "N/A", "g": "N/A", "kd": "N/A", "cf": "N/A", "t": "N/A", "d": "N/A", "y": "N/A"};
+Q.h_player_name = "N/A";
+Q.g_player_name = "N/A";
+Q.kd_player_name = "N/A";
+Q.cf_player_name = "N/A";
+Q.t_player_name = "N/A";
+Q.d_player_name = "N/A";
+Q.y_player_name = "N/A";
 Q.h_is_player = 0;
 Q.g_is_player = 0;
-Q.k_is_player = 0;
+Q.kd_is_player = 0;
 Q.cf_is_player = 1;
 Q.t_is_player = 0;
 Q.d_is_player = 0;
@@ -291,7 +296,7 @@ Q.capital_strike_progress = 0;
 Q.budget = 4;
 
 // Proportion of different social groups
-Q.workers = 48;
+Q.social_life = 48;
 Q.old_middle = 13;
 Q.new_middle = 14;
 Q.rural = 25;
@@ -302,7 +307,7 @@ Q.inflation = 2.9;
 Q.economic_growth = 4.4;
 Q.economic_expansion = 0;
 
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
+Q.classes = ['social_life', 'old_middle', 'new_middle', 'rural', 'unemployed', 'neighborhood'];
 Q.parties = ['h', 'g', 'kd', 'cf', 't', 'd', 'y', 'other_left', 'other_right', 'other'];
 
 // the others bloc break down
@@ -310,16 +315,16 @@ Q.others_split = 0;
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
-Q.workers_spd = 55;
-Q.workers_kpd = 22;
-Q.workers_z = 5;
-Q.workers_ddp = 0;
-Q.workers_dvp = 0;
-Q.workers_dnvp = 6;
-Q.workers_nsdap = 0;
-Q.workers_other = 10;
-Q.workers_other_left = 0;
-Q.workers_other_right = 0;
+Q.social_life_h = 22;
+Q.social_life_g = 55;
+Q.social_life_kd = 0;
+Q.social_life_cf = 5;
+Q.social_life_t = 0;
+Q.social_life_d = 6;
+Q.social_life_y = 0;
+Q.social_life_other = 10;
+Q.social_life_other_left = 0;
+Q.social_life_other_right = 0;
 
 Q.old_middle_spd = 8;
 Q.old_middle_kpd = 1;
@@ -423,33 +428,44 @@ Q.president = "Hindenburg";
 // starting chancellor: Wilhelm Marx
 Q.chancellor = "Marx";
 Q.chancellor_party = 'Z';
-Q.spd_in_government = 0;
-Q.z_in_government = 1;
-Q.ddp_in_government = 0;
-Q.dvp_in_government = 1;
-Q.dnvp_in_government = 1;
-Q.kpd_in_government = 0;
-Q.nsdap_in_government = 0;
+Q.h_in_government = 0;
+Q.g_in_government = 0;
+Q.kd_in_government = 0;
+Q.cf_in_government = 1;
+Q.t_in_government = 1;
+Q.d_in_government = 1;
+Q.y_in_government = 0;
 
-// woah its coalitions
-// left coalition = SPD + KPD + left-splinters
-Q.in_left_front = 0;
-// Popular front = SPD + KPD + Z + DDP
+// coalitions
+// United Front = Himidere + Genki + Others-left if Others Bloc breaks down
+Q.in_united_front = 0;
+// Popular Front = Himidere + Genki + Kuudere/Dandere + Childhood Friend + Others-left if Others Bloc breaks down
 Q.in_popular_front = 0;
-// Weimar coalition = SPD + Z + DDP
-Q.in_weimar_coalition = 0;
-// Grand coalition = SPD + Z + BVP + DDP + DVP
-// also includes the "new grand coalition" of SPD + Z + BVP + DDP + DVP + Others
+// Center-left Coalition = Genki + Kuudere/Dandere + Childhood Friend
+Q.in_center_left_coalition = 0;
+// Grand Coalition = Genki + Kuudere/Dandere + Childhood Friend + Tsundere
 Q.in_grand_coalition = 0;
-// Right coalition = Z + DVP + DNVP
-Q.in_right_coalition = 0;
-// emergency government containing the SPD: only president Braun can do this.
-Q.in_emergency_government = 0;
-Q.grand_coalition_failed = 0;
-// if the SPD is ruling as part of a minority government
-Q.in_minority_government = 0;
-// special cases
-Q.in_spd_majority = 0;
+// Constitutional Coalition = Genki + Kuudere/Dandere + Childhood Friend + Tsundere + Others
+Q.in_constitutional_coalition = 0;
+// Centrist Coalition = Kuudere/Dandere + Childhood Friend + Tsundere + Others
+Q.in_centrist_coalition = 0;
+// Center-right Coalition = Kuudere/Dandere + Childhood Friend + Tsundere + Delinquent + Others-right if Others Bloc breaks down
+Q.in_center_right_coalition = 0;
+// Right-wing Coalition = Childhood Friend + Tsundere + Delinquent + Others-right if Others Bloc breaks down
+Q.in_right_wing_coalition = 0;
+// Radical Right Coalition = Childhood Friend + Delinquent + Yandere. Worlds most unstable coalition, probably should be an achievement
+Q.in_radical_right_coalition = 0;
+// Far Right Coalition = Delinquent + Yandere.
+Q.in_far_right_coalition = 0;
+
+// Majorities
+Q.in_h_majority = 0;
+Q.in_g_majority = 0;
+Q.in_kd_majority = 0;
+Q.in_cf_majority = 0;
+Q.in_t_majority = 0;
+Q.in_d_majority = 0;
+Q.in_y_majority = 0;
 
 // if you're in a coalition, this is an incremental counter for how many times dissent has happened from the right.
 Q.coalition_dissent = 0;
@@ -463,22 +479,22 @@ Q.spd_toleration = 0;
 Q.minority_government = 0;
 
 // ministries - which parties control the ministries?
-Q.foreign_minister = 'Streseman';
-Q.foreign_minister_party = 'DVP';
-Q.interior_minister = 'von Keudell';
-Q.interior_minister_party = 'DNVP';
-Q.justice_minister = 'Hergt';
-Q.justice_minister_party = 'DNVP';
 Q.labor_minister = 'Brauns';
 Q.labor_minister_party = 'Z';
-Q.reichswehr_minister = 'Groener';
-Q.reichswehr_minister_party = 'I';
-Q.economic_minister = 'Curtius';
-Q.economic_minister_party = 'DVP';
+Q.interior_minister = 'von Keudell';
+Q.interior_minister_party = 'DNVP';
 Q.finance_minister = 'Köhler';
 Q.finance_minister_party = 'Z';
+Q.economic_minister = 'Curtius';
+Q.economic_minister_party = 'DVP';
+Q.justice_minister = 'Hergt';
+Q.justice_minister_party = 'DNVP';
+Q.foreign_minister = 'Streseman';
+Q.foreign_minister_party = 'DVP';
 Q.agriculture_minister = 'Schiele';
 Q.agriculture_minister_party = 'DNVP';
+Q.reichswehr_minister = 'Groener';
+Q.reichswehr_minister_party = 'I';
 
 // Events: what has occurred?
 Q.panzerkreuzer_seen = 0;
