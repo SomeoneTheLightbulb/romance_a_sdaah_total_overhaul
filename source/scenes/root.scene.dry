@@ -30,17 +30,19 @@ Q.month_actions = 0;
 Q.week_actions = 0;
 Q.day_actions = 0;
 
-// 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
+// 0 = easy difficulty, 1 = normal mode, 2 = hard mode, 3 = very hard no saves
 Q.difficulty = 0;
 Q.historical_mode = 0;
 Q.player = "cf";
-Q.h_player_name = "N/A";
-Q.g_player_name = "N/A";
-Q.kd_player_name = "N/A";
-Q.cf_player_name = "N/A";
-Q.t_player_name = "N/A";
-Q.d_player_name = "N/A";
-Q.y_player_name = "N/A";
+// names sourced from https://www.behindthename.com/
+// theyre placeholder names for now, unless i dont change them
+Q.h_name = "Tsukasa";
+Q.g_name = "Katsumi";
+Q.kd_name = "Emiko";
+Q.cf_name = "Mariko";
+Q.t_name = "Akane";
+Q.d_name = "Megumi";
+Q.y_name = "Sakura";
 Q.h_is_player = 0;
 Q.g_is_player = 0;
 Q.kd_is_player = 0;
@@ -158,7 +160,8 @@ Q.cf_assertive_dissent = 10;
 // getting a bit attached. still constitutional though
 Q.cf_devoted_strength = 0;
 Q.cf_devoted_dissent = 0;
-// insert joke about how this obsessive personality is further right-wing than anything tsundere and delinquent have
+// insert joke about how this obsessive personality basically outflanks any personality tsundere and delinquent have
+// also, its so over for everyone
 Q.cf_obsessive_strength = 0;
 Q.cf_obsessive_dissent = 0;
 
@@ -181,24 +184,33 @@ Q.t_devoted_dissent = 0;
 
 // an odd one, otome describes this as a bad boy, but thats not universal. so delinquent personalities?
 Q.d_factions = ['d_fond', 'd_softened', 'd_aloof', 'd_protective', 'd_possessive'];
+// we finally admit feelings
 Q.d_fond_strength = 0;
 Q.d_fond_dissent = 0;
+// opening up
 Q.d_softened_strength = 5;
 Q.d_softened_dissent = 0;
-Q.d_aloof_strength = 55;
+// you know, i just realized, cant we just model a bad boy as a militant kuudere?
+Q.d_aloof_strength = 70;
 Q.d_aloof_dissent = 5;
+// i dont trust you with that person
 Q.d_protective_strength = 25;
-Q.d_protective_dissent = 5;
+Q.d_protective_dissent = 10;
+// i know youre stuck with me, but im just protecting you. trust me
 Q.d_possessive_strength = 0;
 Q.d_possessive_dissent = 0;
 
 // yandere personalities. i dont think i need to explain why theyre the furthest right lmao
 Q.y_factions = ['y_devoted', 'y_possessive', 'y_obsessive'];
+// we still committed to the constitutional order, barely. also, this devoted personality is just a mishmash of the non-violent types
 Q.y_devoted_strength = 65;
-Q.y_devoted_dissent = 0;
-Q.y_possessive_strength = 15;
-Q.y_possessive_dissent = 5;
-Q.y_obsessive_strength = 10;
+Q.y_devoted_dissent = 5;
+// entering violent territory
+Q.y_possessive_strength = 20;
+Q.y_possessive_dissent = 10;
+// 'without you, my life means nothing.' thing i got from a song
+// also, do i have to say why this might be bad for everyone else?
+Q.y_obsessive_strength = 5;
 Q.y_obsessive_dissent = 5;
 
 // hidden personalities, just retroactively change this as we branch out to other characters
