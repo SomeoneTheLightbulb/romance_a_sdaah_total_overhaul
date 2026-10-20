@@ -873,11 +873,11 @@ go-to: maingame_start
 
 // Childhood Friend Selection
 @childhood_friend_select
-title: Name
+title: [+ cf_name +]
 
-**Name** - Description.
+**[+ cf_name +]** - The longtime friend of [+ protagonist +]. [+ cf_name +] has known [+ protagonist +] since they were children, having
 
-- @childhood_friend_confirmed: Yes, I am Character2!
+- @childhood_friend_confirmed: Yes, I am [+ cf_name +]!
 - @player_selection: No, select a different character.
 
 @childhood_friend_confirmed
@@ -910,6 +910,61 @@ difficulty = 4;
 historical_mode = 1;
 cf_resources = 2;
 cf_dues = 2;
+cf_outgoing_dissent = 30;
+cf_passive_dissent = 25;
+cf_assertive_dissent = 20;
+h_cf_relation = 5;
+g_cf_relation = 40;
+kd_cf_relation = 48;
+cf_t_relation = 45;
+cf_d_relation = 15;
+cf_y_relation = 0;
+budget = 2;
+this.state.disableSaves = true;
+!}
+go-to: maingame_start
+
+// Tsundere Selection
+@tsundere_select
+title: Name
+choose-if: achievement_game_completed
+unavailable-subtitle: Complete the game as character3 first.
+
+**Name** - Description.
+
+- @tsundere_confirmed: Yes, I am Character2!
+- @player_selection: No, select a different character.
+
+@tsundere_confirmed
+on-arrival: player_party_name = "N/A"; player_party = "t"; cf_is_player = 0; t_is_player = 1
+go-to: difficulty_setting_tsundere
+
+@difficulty_setting_tsundere
+
+- @tsundere_easy: Begin (Easy difficulty)
+- @tsundere_normal: Begin (Normal difficulty)
+- @tsundere_hard: Begin (Hard difficulty)
+- @tsundere_very_hard: Begin (Very Hard difficulty)
+
+@tsundere_easy
+on-arrival: difficulty = 1; t_resources = 4; t_dues = 4; h_cf_relation = 13; g_cf_relation = 50; kd_cf_relation = 60; cf_t_relation = 55; cf_d_relation = 25; cf_y_relation = 12; budget = 5
+go-to: maingame_start
+
+@tsundere_normal
+on-arrival: difficulty = 2; t_resources = 3; t_dues = 3; h_cf_relation = 10; g_cf_relation = 45; kd_cf_relation = 55; cf_t_relation = 50; cf_d_relation = 20; cf_y_relation = 10; budget = 5
+go-to: maingame_start
+
+@tsundere_hard
+on-arrival: difficulty = 3; t_resources = 2; t_dues = 2; cf_outgoing_dissent = 25; cf_passive_dissent = 20; cf_assertive_dissent = 20; h_cf_relation = 6; g_cf_relation = 40; kd_cf_relation = 50; cf_t_relation = 45; cf_d_relation = 18; cf_y_relation = 5; budget = 3;
+go-to: maingame_start
+
+@tsundere_very_hard
+subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
+on-arrival: {!
+difficulty = 4;
+historical_mode = 1;
+t_resources = 2;
+t_dues = 2;
 cf_outgoing_dissent = 30;
 cf_passive_dissent = 25;
 cf_assertive_dissent = 20;
