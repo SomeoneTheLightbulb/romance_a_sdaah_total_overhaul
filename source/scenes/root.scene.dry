@@ -711,17 +711,17 @@ Select a character:
 
 // Himidere Selection
 @himidere_select
-title: Name
-choose-if: achievement_game_completed
-unavailable-subtitle: Complete the game as character2 first.
+title: [+ h_name +]
+choose-if: achievement_game_completed_genki_very_hard
+unavailable-subtitle: Win the game as [+ g_name +] in Very Hard first.
 
-**Name** - Description.
+**[+ h_name +]** - One of the popular girls in school, along with [+ g_name +]. [+ h_name +] has always thought of herself as perfection, something that is recognized by everyone in school. Everyone except [+ protagonist +], who caught her attention during one fateful day.
 
-- @himidere_confirmed: Yes, I am Character1!
+- @himidere_confirmed: Yes, I am [+ h_name +]!
 - @player_selection: No, select a different character.
 
 @himidere_confirmed
-on-arrival: player_party_name = "N/A"; player_party = "h"; h_is_player = 1; cf_is_player = 0
+on-arrival: h_is_player = 1; g_is_player = 0; kd_is_player = 0; cf_is_player = 0; t_is_player = 0; d_is_player = 0; y_is_player = 0;
 go-to: difficulty_setting_himidere
 
 @difficulty_setting_himidere
@@ -772,7 +772,7 @@ unavailable-subtitle: Complete the game as character3 first.
 - @player_selection: No, select a different character.
 
 @genki_confirmed
-on-arrival: player_party_name = "N/A"; player_party = "g"; g_is_player = 1; cf_is_player = 0
+on-arrival: h_is_player = 0; g_is_player = 1; kd_is_player = 0; cf_is_player = 0; t_is_player = 0; d_is_player = 0; y_is_player = 0;
 go-to: difficulty_setting_genki
 
 @difficulty_setting_genki
@@ -828,7 +828,7 @@ unavailable-subtitle: Complete the game as character3 first.
 - @player_selection: No, select a different character.
 
 @dandere_confirmed
-on-arrival: player_party_name = "N/A"; player_party = "g"; g_is_player = 1; cf_is_player = 0
+on-arrival: h_is_player = 0; g_is_player = 0; kd_is_player = 1; cf_is_player = 0; t_is_player = 0; d_is_player = 0; y_is_player = 0;
 go-to: difficulty_setting_dandere
 
 @difficulty_setting_dandere
@@ -875,13 +875,13 @@ go-to: maingame_start
 @childhood_friend_select
 title: [+ cf_name +]
 
-**[+ cf_name +]** - The longtime friend of [+ protagonist +]. [+ cf_name +] has known [+ protagonist +] since they were children, having
+**[+ cf_name +]** - The longtime friend of [+ protagonist +]. [+ cf_name +] has known [+ protagonist +] since they were children, having been together since
 
 - @childhood_friend_confirmed: Yes, I am [+ cf_name +]!
 - @player_selection: No, select a different character.
 
 @childhood_friend_confirmed
-on-arrival: player_party_name = "N/A"; player_party = "cf"; cf_is_player = 1
+on-arrival: h_is_player = 0; g_is_player = 0; kd_is_player = 0; cf_is_player = 1; t_is_player = 0; d_is_player = 0; y_is_player = 0;
 go-to: difficulty_setting_childhood_friend
 
 @difficulty_setting_childhood_friend
@@ -936,7 +936,7 @@ unavailable-subtitle: Complete the game as character3 first.
 - @player_selection: No, select a different character.
 
 @tsundere_confirmed
-on-arrival: player_party_name = "N/A"; player_party = "t"; cf_is_player = 0; t_is_player = 1
+on-arrival: h_is_player = 0; g_is_player = 0; kd_is_player = 0; cf_is_player = 0; t_is_player = 1; d_is_player = 0; y_is_player = 0;
 go-to: difficulty_setting_tsundere
 
 @difficulty_setting_tsundere
@@ -947,15 +947,15 @@ go-to: difficulty_setting_tsundere
 - @tsundere_very_hard: Begin (Very Hard difficulty)
 
 @tsundere_easy
-on-arrival: difficulty = 1; t_resources = 4; t_dues = 4; h_cf_relation = 13; g_cf_relation = 50; kd_cf_relation = 60; cf_t_relation = 55; cf_d_relation = 25; cf_y_relation = 12; budget = 5
+on-arrival: difficulty = 1; t_resources = 4; t_dues = 4; g_t_relation = 30; kd_t_relation = 60; cf_t_relation = 55; t_d_relation = 50; t_y_relation = 12; budget = 5
 go-to: maingame_start
 
 @tsundere_normal
-on-arrival: difficulty = 2; t_resources = 3; t_dues = 3; h_cf_relation = 10; g_cf_relation = 45; kd_cf_relation = 55; cf_t_relation = 50; cf_d_relation = 20; cf_y_relation = 10; budget = 5
+on-arrival: difficulty = 2; t_resources = 3; t_dues = 3; g_t_relation = 25; kd_t_relation = 60; cf_t_relation = 50; t_d_relation = 50; t_y_relation = 10; budget = 5
 go-to: maingame_start
 
 @tsundere_hard
-on-arrival: difficulty = 3; t_resources = 2; t_dues = 2; cf_outgoing_dissent = 25; cf_passive_dissent = 20; cf_assertive_dissent = 20; h_cf_relation = 6; g_cf_relation = 40; kd_cf_relation = 50; cf_t_relation = 45; cf_d_relation = 18; cf_y_relation = 5; budget = 3;
+on-arrival: difficulty = 3; t_resources = 2; t_dues = 2; t_comfortable_dissent = 15; t_guarded_dissent = 20; t_committed_dissent = 25; g_t_relation = 20; kd_t_relation = 55; cf_t_relation = 45; t_d_relation = 48; t_y_relation = 5; budget = 3;
 go-to: maingame_start
 
 @tsundere_very_hard
@@ -965,15 +965,14 @@ difficulty = 4;
 historical_mode = 1;
 t_resources = 2;
 t_dues = 2;
-cf_outgoing_dissent = 30;
-cf_passive_dissent = 25;
-cf_assertive_dissent = 20;
-h_cf_relation = 5;
-g_cf_relation = 40;
-kd_cf_relation = 48;
+t_comfortable_dissent = 20;
+t_guarded_dissent = 25;
+t_committed_dissent = 30;
+g_t_relation = 20;
+kd_t_relation = 50;
 cf_t_relation = 45;
-cf_d_relation = 15;
-cf_y_relation = 0;
+t_d_relation = 45;
+t_y_relation = 0;
 budget = 2;
 this.state.disableSaves = true;
 !}
