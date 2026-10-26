@@ -26,7 +26,6 @@ Q.month = 1;
 Q.week = 1;
 Q.day = 1;
 
-Q.month_actions = 0;
 Q.week_actions = 0;
 Q.day_actions = 0;
 
@@ -36,13 +35,22 @@ Q.historical_mode = 0;
 Q.player = "cf";
 // names sourced from https://www.behindthename.com/
 // theyre placeholder names for now, unless i dont change them
+Q.protagonist = "";
+Q.protagonist_last_name = "";
 Q.h_name = "Tsukasa";
+Q.h_last_name = "";
 Q.g_name = "Katsumi";
+Q.g_last_name = "";
 Q.kd_name = "Emiko";
+Q.kd_last_name = "";
 Q.cf_name = "Mariko";
+Q.cf_last_name = "";
 Q.t_name = "Akane";
+Q.t_last_name = "";
 Q.d_name = "Megumi";
+Q.d_last_name = "";
 Q.y_name = "Sakura";
+Q.y_last_name = "";
 Q.h_is_player = 0;
 Q.g_is_player = 0;
 Q.kd_is_player = 0;
@@ -64,7 +72,7 @@ Q.y_is_player = 0;
 // Q.player6_character = "";
 // Q.player7_character = "";
 
-// time i guess
+// for spontaneous events & deliberate actions
 Q.h_resources = 2;
 Q.g_resources = 2;
 Q.kd_resources = 2;
@@ -72,7 +80,7 @@ Q.cf_resources = 2;
 Q.t_resources = 2;
 Q.d_resources = 2;
 Q.y_resources = 3;
-// resting phase, determines time regen
+// daily effort i guess
 Q.h_dues = 2;
 Q.g_dues = 2;
 Q.kd_dues = 2;
@@ -106,6 +114,7 @@ Q.y_dissent_percent = 5;
 
 // himidere personalities
 Q.h_factions = ['h_domineering', 'h_outgoing'];
+Q.h_ruling_personality = "domineering"
 Q.h_domineering_strength = 65;
 Q.h_domineering_dissent = 0;
 Q.h_outgoing_strength = 35;
@@ -113,6 +122,7 @@ Q.h_outgoing_dissent = 20;
 
 // genki personalities
 Q.g_factions = ['g_energetic', 'g_outgoing', 'g_cheerful', 'g_friendly', 'g_affectionate', 'g_devoted'];
+Q.g_ruling_personality = "outgoing"
 // first impressions, friendly to most but not really focused on a specific person (yet).
 Q.g_energetic_strength = 15;
 Q.g_energetic_dissent = 20;
@@ -132,6 +142,7 @@ Q.g_devoted_dissent = 0;
 
 // kuudere & dandere personalities, both meshed into one character
 Q.kd_factions = ['kd_affectionate', 'kd_shy', 'kd_quiet', 'kd_reserved', 'kd_aloof'];
+Q.kd_ruling_personality = "quiet"
 // culmination of kuudere and dandere development
 Q.kd_affectionate_strength = 0;
 Q.kd_affectionate_dissent = 0;
@@ -148,6 +159,7 @@ Q.kd_aloof_dissent = 10;
 
 // childhood friend personalities
 Q.cf_factions = ['cf_outgoing', 'cf_passive', 'cf_assertive', 'cf_devoted', 'cf_obsessive'];
+Q.cf_ruling_personality = "passive"
 // the left flank
 Q.cf_outgoing_strength = 20;
 Q.cf_outgoing_dissent = 10;
@@ -167,6 +179,7 @@ Q.cf_obsessive_dissent = 0;
 
 // tsundere personalities
 Q.t_factions = ['t_affectionate', 't_comfortable', 't_guarded', 't_committed', 't_devoted'];
+Q.t_ruling_personality = "guarded"
 // its the deredere part
 Q.t_affectionate_strength = 0;
 Q.t_affectionate_dissent = 0;
@@ -184,6 +197,7 @@ Q.t_devoted_dissent = 0;
 
 // an odd one, otome describes this as a bad boy, but thats not universal. so delinquent personalities?
 Q.d_factions = ['d_fond', 'd_softened', 'd_aloof', 'd_protective', 'd_possessive'];
+Q.d_ruling_personality = "aloof"
 // we finally admit feelings
 Q.d_fond_strength = 0;
 Q.d_fond_dissent = 0;
@@ -202,13 +216,14 @@ Q.d_possessive_dissent = 0;
 
 // yandere personalities. i dont think i need to explain why theyre the furthest right lmao
 Q.y_factions = ['y_devoted', 'y_possessive', 'y_obsessive'];
+Q.y_ruling_personality = "devoted"
 // we still committed to the constitutional order, barely. also, this devoted personality is just a mishmash of the non-violent types
 Q.y_devoted_strength = 65;
 Q.y_devoted_dissent = 5;
 // entering violent territory
 Q.y_possessive_strength = 20;
 Q.y_possessive_dissent = 10;
-// 'without you, my life means nothing.' thing i got from a song
+// 'without you, my life means nothing.' excerpt from a song
 // also, do i have to say why this might be bad for everyone else?
 Q.y_obsessive_strength = 5;
 Q.y_obsessive_dissent = 5;
@@ -319,10 +334,11 @@ Q.inflation = 2.9;
 Q.economic_growth = 4.4;
 Q.economic_expansion = 0;
 
-Q.classes = ['social_life', 'old_middle', 'new_middle', 'rural', 'unemployed', 'neighborhood'];
+Q.classes = ['social_life', 'old_middle', 'new_middle', 'rural', 'unemployed', 'home_life'];
 Q.parties = ['h', 'g', 'kd', 'cf', 't', 'd', 'y', 'other_left', 'other_right', 'other'];
 
-// the others bloc break down
+// the others bloc breaks down
+// important for rubicon
 Q.others_split = 0;
 
 // Support for party by social group
@@ -715,7 +731,8 @@ title: [+ h_name +]
 choose-if: achievement_game_completed_genki_very_hard
 unavailable-subtitle: Win the game as [+ g_name +] in Very Hard first.
 
-**[+ h_name +]** - One of the popular girls in school, along with [+ g_name +]. [+ h_name +] has always thought of herself as perfection, something that is recognized by everyone in school. Everyone except [+ protagonist +], who caught her attention during one fateful day.
+**[+ h_name +]** - One of the popular girls at school, along with [+ g_name +]. [+ h_name +] comes from a prominent family, having been recently elected as
+has always thought of herself as perfection, something that is recognized by everyone in school. Everyone except [+ protagonist +], who caught her attention during one fateful day.
 
 - @himidere_confirmed: Yes, I am [+ h_name +]!
 - @player_selection: No, select a different character.
