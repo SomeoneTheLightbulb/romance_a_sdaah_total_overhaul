@@ -32,10 +32,19 @@ Q.day_actions = 0;
 // 0 = easy difficulty, 1 = normal mode, 2 = hard mode, 3 = very hard no saves
 Q.difficulty = 0;
 Q.historical_mode = 0;
-Q.player = "cf";
+
+Q.h_is_player = 0;
+Q.g_is_player = 0;
+Q.kd_is_player = 0;
+Q.cf_is_player = 1;
+Q.t_is_player = 0;
+Q.d_is_player = 0;
+Q.y_is_player = 0;
+
 // names sourced from https://www.behindthename.com/
 // theyre placeholder names for now, unless i dont change them
-Q.protagonist = "";
+// protagonist & major characters, ie the people youll be playing as
+Q.protagonist = "Haruto";
 Q.protagonist_last_name = "";
 Q.h_name = "Tsukasa";
 Q.h_last_name = "";
@@ -51,13 +60,22 @@ Q.d_name = "Megumi";
 Q.d_last_name = "";
 Q.y_name = "Sakura";
 Q.y_last_name = "";
-Q.h_is_player = 0;
-Q.g_is_player = 0;
-Q.kd_is_player = 0;
-Q.cf_is_player = 1;
-Q.t_is_player = 0;
-Q.d_is_player = 0;
-Q.y_is_player = 0;
+
+// minor characters, used for something
+Q.others_left_name = "N/A";
+Q.others_left_last_name = "N/A";
+Q.others_right_name = "N/A";
+Q.others_right_last_name = "N/A";
+Q.a_others_name = "N/A";
+Q.a_others_last_name = "N/A";
+Q.b_others_name = "N/A";
+Q.b_others_last_name = "N/A";
+Q.c_others_name = "N/A";
+Q.c_others_last_name = "N/A";
+Q.d_others_name = "N/A";
+Q.d_others_last_name = "N/A";
+Q.e_others_name = "N/A";
+Q.e_others_last_name = "N/A";
 
 // multiplayer stuff, imported from Petrograd
 // Q.current_player = 1;
@@ -113,7 +131,7 @@ Q.y_dissent = 0.05;
 Q.y_dissent_percent = 5;
 
 // himidere personalities
-Q.h_factions = ['h_domineering', 'h_outgoing'];
+Q.h_personalities = ['h_domineering', 'h_outgoing'];
 Q.h_ruling_personality = "domineering"
 Q.h_domineering_strength = 65;
 Q.h_domineering_dissent = 0;
@@ -121,7 +139,7 @@ Q.h_outgoing_strength = 35;
 Q.h_outgoing_dissent = 20;
 
 // genki personalities
-Q.g_factions = ['g_energetic', 'g_outgoing', 'g_cheerful', 'g_friendly', 'g_affectionate', 'g_devoted'];
+Q.g_personalities = ['g_energetic', 'g_outgoing', 'g_cheerful', 'g_friendly', 'g_affectionate', 'g_devoted'];
 Q.g_ruling_personality = "outgoing"
 // first impressions, friendly to most but not really focused on a specific person (yet).
 Q.g_energetic_strength = 15;
@@ -141,7 +159,7 @@ Q.g_devoted_strength = 0;
 Q.g_devoted_dissent = 0;
 
 // kuudere & dandere personalities, both meshed into one character
-Q.kd_factions = ['kd_affectionate', 'kd_shy', 'kd_quiet', 'kd_reserved', 'kd_aloof'];
+Q.kd_personalities = ['kd_affectionate', 'kd_shy', 'kd_quiet', 'kd_reserved', 'kd_aloof'];
 Q.kd_ruling_personality = "quiet"
 // culmination of kuudere and dandere development
 Q.kd_affectionate_strength = 0;
@@ -158,7 +176,7 @@ Q.kd_aloof_strength = 15;
 Q.kd_aloof_dissent = 10;
 
 // childhood friend personalities
-Q.cf_factions = ['cf_outgoing', 'cf_passive', 'cf_assertive', 'cf_devoted', 'cf_obsessive'];
+Q.cf_personalities = ['cf_outgoing', 'cf_passive', 'cf_assertive', 'cf_devoted', 'cf_obsessive'];
 Q.cf_ruling_personality = "passive"
 // the left flank
 Q.cf_outgoing_strength = 20;
@@ -178,7 +196,7 @@ Q.cf_obsessive_strength = 0;
 Q.cf_obsessive_dissent = 0;
 
 // tsundere personalities
-Q.t_factions = ['t_affectionate', 't_comfortable', 't_guarded', 't_committed', 't_devoted'];
+Q.t_personalities = ['t_affectionate', 't_comfortable', 't_guarded', 't_committed', 't_devoted'];
 Q.t_ruling_personality = "guarded"
 // its the deredere part
 Q.t_affectionate_strength = 0;
@@ -196,7 +214,7 @@ Q.t_devoted_strength = 0;
 Q.t_devoted_dissent = 0;
 
 // an odd one, otome describes this as a bad boy, but thats not universal. so delinquent personalities?
-Q.d_factions = ['d_fond', 'd_softened', 'd_aloof', 'd_protective', 'd_possessive'];
+Q.d_personalities = ['d_fond', 'd_softened', 'd_aloof', 'd_protective', 'd_possessive'];
 Q.d_ruling_personality = "aloof"
 // we finally admit feelings
 Q.d_fond_strength = 0;
@@ -215,7 +233,7 @@ Q.d_possessive_strength = 0;
 Q.d_possessive_dissent = 0;
 
 // yandere personalities. i dont think i need to explain why theyre the furthest right lmao
-Q.y_factions = ['y_devoted', 'y_possessive', 'y_obsessive'];
+Q.y_personalities = ['y_devoted', 'y_possessive', 'y_obsessive'];
 Q.y_ruling_personality = "devoted"
 // we still committed to the constitutional order, barely. also, this devoted personality is just a mishmash of the non-violent types
 Q.y_devoted_strength = 65;
@@ -286,14 +304,29 @@ Q.t_y_relation = 10;
 
 Q.d_y_relation = 25;
 
-// relationship with the love interest
-Q.h_love_interest_relation = 0;
-Q.g_love_interest_relation = 10;
-Q.kd_love_interest_relation = 10;
-Q.cf_love_interest_relation = 25;
-Q.t_love_interest_relation = 5;
-Q.d_love_interest_relation = 5;
-Q.y_love_interest_relation = 0;
+// relationship with the protagonist
+// relations are just being friendly, while romantic relations is for the actual romance
+// both can rise at the same time, but if relations drop, then so does romantic relations
+Q.h_protagonist_relation = 0;
+Q.h_protagonist_romantic_relation = 0;
+
+Q.g_protagonist_relation = 10;
+Q.g_protagonist_romantic_relation = 0;
+
+Q.kd_protagonist_relation = 10;
+Q.kd_protagonist_romantic_relation = 0;
+
+Q.cf_protagonist_relation = 25;
+Q.cf_protagonist_romantic_relation = 0;
+
+Q.t_protagonist_relation = 5;
+Q.t_protagonist_romantic_relation = 0;
+
+Q.d_protagonist_relation = 5;
+Q.d_protagonist_romantic_relation = 0;
+
+Q.y_protagonist_relation = 0;
+Q.y_protagonist_romantic_relation = 0;
 
 // The state of the story
 // national ideology - on a binary scale
@@ -328,14 +361,14 @@ Q.old_middle = 13;
 Q.new_middle = 14;
 Q.rural = 25;
 Q.unemployed = 8.6;
-Q.catholics = 30;
+Q.home_life = 30;
 
 Q.inflation = 2.9;
 Q.economic_growth = 4.4;
 Q.economic_expansion = 0;
 
-Q.classes = ['social_life', 'old_middle', 'new_middle', 'rural', 'unemployed', 'home_life'];
-Q.parties = ['h', 'g', 'kd', 'cf', 't', 'd', 'y', 'other_left', 'other_right', 'other'];
+Q.scene_type = ['social_life', 'old_middle', 'new_middle', 'rural', 'unemployed', 'home_life'];
+Q.characters = ['h', 'g', 'kd', 'cf', 't', 'd', 'y', 'other_left', 'other_right', 'other'];
 
 // the others bloc breaks down
 // important for rubicon
@@ -398,16 +431,16 @@ Q.unemployed_other = 7;
 Q.unemployed_other_left = 0;
 Q.unemployed_other_right = 0;
 
-Q.catholics_spd = 21;
-Q.catholics_kpd = 2;
-Q.catholics_z = 49;
-Q.catholics_ddp = 0;
-Q.catholics_dvp = 5;
-Q.catholics_dnvp = 5;
-Q.catholics_nsdap = 0;
-Q.catholics_other = 16;
-Q.catholics_other_left = 0;
-Q.catholics_other_right = 0;
+Q.home_life_h = 2;
+Q.home_life_g = 21;
+Q.home_life_kd = 0;
+Q.home_life_cf = 49;
+Q.home_life_t = 5;
+Q.home_life_d = 5;
+Q.home_life_y = 0;
+Q.home_life_other = 16;
+Q.home_life_other_left = 0;
+Q.home_life_other_right = 0;
 
 // Current Reichstag composition
 // % of Reichstag in Jan 1928
@@ -434,15 +467,6 @@ Q.old_other_r = 9;
 Q.old_other_left_r = 0;
 Q.old_other_right_r = 0;
 
-// this is what the player will see as their names
-Q.ddp_name = "DDP";
-Q.kpd_name = "KPD";
-Q.spd_name = "SPD";
-Q.z_name = "Z";
-Q.dvp_name = "DVP";
-Q.dnvp_name = "DNVP";
-Q.nsdap_name = "NSDAP";
-
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
@@ -450,12 +474,8 @@ Q.party_support_records = [];
 // inflation and unemployment records
 Q.economic_records = [];
 
-
-// State of the government
-Q.president = "Hindenburg";
-// starting chancellor: Wilhelm Marx
-Q.chancellor = "Marx";
-Q.chancellor_party = 'Z';
+Q.romantic_lead_character = 'cf';
+Q.side_lead_character = 'N/A';
 Q.h_in_government = 0;
 Q.g_in_government = 0;
 Q.kd_in_government = 0;
@@ -483,7 +503,7 @@ Q.in_center_right_coalition = 0;
 Q.in_right_wing_coalition = 0;
 // Radical Right Coalition = Childhood Friend + Delinquent + Yandere. Worlds most unstable coalition, probably should be an achievement
 Q.in_radical_right_coalition = 0;
-// Far Right Coalition = Delinquent + Yandere.
+// Far Right Coalition = Delinquent + Yandere
 Q.in_far_right_coalition = 0;
 
 // Majorities
@@ -665,7 +685,6 @@ Q.sh_ban_timer = 0;
 Q.kpd_ultimatum_timer = 0;
 Q.march_on_berlin_timer = 0;
 
-
 // all the initial advisors are centrists.
 Q.wels_advisor = 1; // Otto Wels
 Q.muller_advisor = 1; // Hermann Müller
@@ -727,11 +746,11 @@ Select a character:
 
 // Himidere Selection
 @himidere_select
-title: [+ h_name +]
+title: [+ h_name +] [+ h_last_name +]
 choose-if: achievement_game_completed_genki_very_hard
 unavailable-subtitle: Win the game as [+ g_name +] in Very Hard first.
 
-**[+ h_name +]** - One of the popular girls at school, along with [+ g_name +]. [+ h_name +] comes from a prominent family, having been recently elected as
+**[+ h_name +] [+ h_last_name +]** - One of the popular girls at school, along with [+ g_name +]. [+ h_name +] comes from a prominent family, having been recently elected as
 has always thought of herself as perfection, something that is recognized by everyone in school. Everyone except [+ protagonist +], who caught her attention during one fateful day.
 
 - @himidere_confirmed: Yes, I am [+ h_name +]!
@@ -749,6 +768,7 @@ go-to: difficulty_setting_himidere
 - @himidere_very_hard: Begin (Very Hard difficulty)
 
 @himidere_easy
+subtitle: "**"
 on-arrival: difficulty = 1; h_resources = 4; h_dues = 5; h_g_relation = 33; h_kd_relation = 15; h_cf_relation = 13; budget = 5
 go-to: maingame_start
 
