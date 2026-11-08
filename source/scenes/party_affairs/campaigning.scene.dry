@@ -14,10 +14,10 @@ Whether or not you're busy, you still try to find time to spend with [+ protagon
 - @social_life: Friendly overtures, your primary approach.
 - @new_middle: The "new middle class" of government employees and white-collar workers.
 - @old_middle: The "old middle class" of small independent businessmen and artisans.
-- @rural: Rural workers and small farmers, who have felt neglected by us in the past.
-- @: Impassioned gestures that'll leave an impact on [+ protagonist +].
+- @rural: Outside of school activities, something you're not used to.
+- @: Perhaps something emotionally intense with [+ protagonist +]?
 - @home_life: [+ protagonist +]'s home life, typically done by [+ cf_name +].
-- @root: We either don't want to or cannot campaign right now.
+- @root: You either don't want to or cannot spend time right now.
 - @easy_discard
 
 @social_life
@@ -26,7 +26,7 @@ choose-if: g_resources >= 1
 unavailable-subtitle: Not enough spare time.
 on-arrival: workers_spd += 6*(1-dissent); workers_spd -= 2 if unemployed >= 15; workers_spd -= 2 if unemployed >= 25; workers_spd += 6*(1-dissent) if wtb_adopted = 1; g_resources -= 1; workers_spd += 3*(1-dissent) if nationalization_progress >= 1;
 
-You have spent your time chatting & hanging out with [+ protagonist =]. [? if unemployed >= 15: Though, [+ protagonist =]'s decreasing free time makes it difficult for you to. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract workers. ?]
+You have spent your time chatting & hanging out with [+ protagonist +]. [? if unemployed >= 15: Though, [+ protagonist =]'s decreasing free time makes it difficult for you to. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract workers. ?]
 
 @new_middle
 subtitle: -1 spare time
@@ -60,12 +60,12 @@ on-arrival: unemployed_spd += 6*(1-dissent); g_resources -= 1; unemployed_spd -=
 
 You have spent your time among the unemployed. [? if welfare < 0: The welfare cuts and resultant poverty make our campaign more difficult, since we are associated with the government that enacted these cuts, and our campaign may even backfire. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract support from the unemployed. ?]
 
-// the catholic demographic. for anyone who isnt childhood friend, if theyre sufficiently right-wign, incur relationship costs with them as a result
+// the catholic demographic. for anyone who isnt childhood friend, if theyre sufficiently right-wing, incur relationship costs with them as a result
 @home_life
 subtitle: -1 spare time
 choose-if: g_resources >= 1
 unavailable-subtitle: Not enough spare time.
 view-if: peoples_party == 1
-on-arrival: catholics_spd += 6*(1-dissent); g_resources -= 1; g_cf_relation -= 5 if g_ruling_personality == "devoted"; g_cf_relation -= 8 if g_ruling_personality == "obsessive";
+on-arrival: catholics_spd += 6*(1-dissent); g_resources -= 1; g_cf_relation -= 5 if cf_ruling_personality == "devoted"; g_cf_relation -= 8 if cf_ruling_personality == "obsessive";
 
-You have spent your time with [+ protagonist +] with helping out in housework. [? if cf_ruling_personality == "obsessive" or cf_ruling_personality == "devoted" : Though, [+ cf_name +] does not seem to welcome you suddenly intruding into her home life with [+ protagonist +]. ?]
+You have spent your time around [+ protagonist +]'s home life. [? if cf_ruling_personality == "obsessive" or cf_ruling_personality == "devoted" : Though, [+ cf_name +] does not seem to welcome you suddenly intruding into her home life with [+ protagonist +]. ?]
