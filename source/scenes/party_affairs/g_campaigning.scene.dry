@@ -14,7 +14,7 @@ Whether or not you're busy, you still try to find time to spend with [+ protagon
 - @social_life: Friendly overtures, your primary approach.
 - @new_middle: The "new middle class" of government employees and white-collar workers.
 - @old_middle: The "old middle class" of small independent businessmen and artisans.
-- @rural: Outside of school activities, something you're not used to.
+- @rural: Out of school activities, something you're not used to.
 - @: Perhaps something emotionally intense with [+ protagonist +]?
 - @home_life: [+ protagonist +]'s home life, typically done by [+ cf_name +].
 - @root: You either don't want to or cannot spend time right now.
@@ -24,9 +24,9 @@ Whether or not you're busy, you still try to find time to spend with [+ protagon
 subtitle: -1 spare time
 choose-if: g_resources >= 1
 unavailable-subtitle: Not enough spare time.
-on-arrival: workers_spd += 6*(1-dissent); workers_spd -= 2 if unemployed >= 15; workers_spd -= 2 if unemployed >= 25; workers_spd += 6*(1-dissent) if wtb_adopted = 1; g_resources -= 1; workers_spd += 3*(1-dissent) if nationalization_progress >= 1;
+on-arrival: social_life_g += 6*(1-g_dissent); social_life_g -= 2 if unemployed >= 15; social_life_g -= 2 if unemployed >= 25; social_life_g += 6*(1-g_dissent) if wtb_adopted = 1; g_resources -= 1; social_life_g += 3*(1-g_dissent) if nationalization_progress >= 1;
 
-You have spent your time chatting & hanging out with [+ protagonist +]. [? if unemployed >= 15: Though, [+ protagonist =]'s decreasing free time makes it difficult for you to. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract workers. ?]
+You have spent your time chatting & hanging out with [+ protagonist +]. [? if unemployed >= 15: Though, this might not be the best time to do so, especially with [+ protagonist +] struggling academically. ?][? if wtb_adopted = 1 : Your shift towards active help makes this action more effective. ?]
 
 @new_middle
 subtitle: -1 spare time
