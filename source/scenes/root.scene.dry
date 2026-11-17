@@ -243,7 +243,7 @@ Q.unemployed_qol = 100;
 Q.old_middle_qol = 100;
 Q.new_middle_qol = 100;
 
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'youth'];
+Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
 Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
 
 // TODO: add 'sapd' later on
@@ -305,15 +305,6 @@ Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 0;
 Q.catholics_other = 16;
 
-Q.youth_spd = 38;
-Q.youth_kpd = 36;
-Q.youth_z = 3;
-Q.youth_ddp = 1;
-Q.youth_dvp = 0;
-Q.youth_dnvp = 5;
-Q.youth_nsdap = 7.5;
-Q.youth_other = 8.5;
-
 // Current Reichstag composition
 // % of Reichstag in Jan 1928
 // source: wikipedia
@@ -342,15 +333,6 @@ Q.old_other_r = 9;
 // sapd isn't formed yet, but it may be formed
 Q.sapd_r = 0;
 Q.old_sapd_r = 0;
-
-// this is what the player will see as their names
-Q.ddp_name = "DDP";
-Q.kpd_name = "KPD";
-Q.spd_name = "SPD";
-Q.z_name = "Z";
-Q.dvp_name = "DVP";
-Q.dnvp_name = "DNVP";
-Q.nsdap_name = "NSDAP";
 
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
@@ -684,7 +666,7 @@ go-to: 1928_main
 @1928_main
 audio: shuffle music/1928_1930/Fruhlingslied.mp3 music/1928_1930/AufHohenBergen.mp3 music/1928_1930/LiedDerPompadour.mp3 music/1928_1930/FrauleinWieKannManNurSoTreuSein.mp3 music/1928_1930/UOkenecka.mp3 music/1928_1933/DerLindenbaum.mp3 music/1928_1933/ZurSonneZurFreiheit.mp3 music/1928_1933/ArbeiterMarseillaise.mp3 music/1928_1933/WannWirSchreitenSeitAnSeit.mp3 music/1928_1933/DieInternationale.mp3 music/1928_1933/SozialistenMarsch.mp3 music/1928_1930_Petrograd/AndanteCantabileNormal.mp3 music/1928_1930_Petrograd/AyUchniem.mp3 music/1928_1930_Petrograd/Kalinka.mp3 music/1928_1930_Petrograd/LongingForOurCountry.mp3 music/1928_1930_Petrograd/SwetitMiesatz.mp3 music/1928_1933_Petrograd/Dubinushka.mp3 music/1928_1933_Petrograd/OdessaMama.mp3
 new-page: true
-go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
+go-to: main if difficulty != -1; main.main_easy if difficulty = -1
 
 = 1928
 
