@@ -334,6 +334,9 @@ Q.old_other_r = 9;
 Q.sapd_r = 0;
 Q.old_sapd_r = 0;
 
+// for changing the DDP's name to the DStP
+Q.ddp_name = "DDP";
+
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
@@ -615,6 +618,7 @@ For more information on the politics and government of the German Republic, see 
 
 @1928_easy
 on-arrival: {!
+console.log("Easy Mode Selected");
 Q.difficulty = -1;
 Q.resources = 4;
 Q.dues = 3;
@@ -624,18 +628,11 @@ Q.z_relation = 54;
 Q.dvp_relation = 49;
 Q.budget = 5;
 !}
-
-Difficulty is [+ difficulty +]
-
-Resources is [+ resources +]
-
-- @1928_easy_continue: Continue
-
-@1928_easy_continue
 go-to: 1928_main
 
 @1928_hard
 on-arrival: {!
+console.log("Hard Mode Selected");
 Q.difficulty = 1;
 Q.resources = 0;
 Q.dues = 1;
@@ -654,6 +651,7 @@ go-to: 1928_main
 @1928_historical
 subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
 on-arrival: {!
+console.log("Historical Mode Selected");
 Q.difficulty = 2;
 Q.historical_mode = 1;
 Q.resources = 2;
