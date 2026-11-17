@@ -624,6 +624,14 @@ Q.z_relation = 54;
 Q.dvp_relation = 49;
 Q.budget = 5;
 !}
+
+Difficulty is [+ difficulty +]
+
+Resources is [+ resources +]
+
+- @1928_easy_continue: Continue
+
+@1928_easy_continue
 go-to: 1928_main
 
 @1928_hard
