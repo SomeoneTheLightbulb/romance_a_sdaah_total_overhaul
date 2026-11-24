@@ -84,19 +84,19 @@ Agriculture: [+ agriculture_minister_party +]
 @narrative_context
 go-to: menu
 
-**Narrative Contexts**
+**Narrative Contexts/Types of Scenes**
 
-**Working Class**: The urban working class - blue-collar workers in factories, workshops, mines, and the like. Most are socialist, supporting either the SPD or KPD. They make up 40-50% of the population.
+**Social Life**: These scenes are typically the most numerous, as it includes everything from hanging out to even striking up a conversation. This tends to be the main scene type for the more proactive love interests.
 
-**Old Mittelstand**: The old middle class consists of independent artisans, shopkeepers, and small-time businesspeople. They tend to be conservative and are the strongest base for the far right. 10-15% of the population.
+**Hobbies**: The old middle class consists of independent artisans, shopkeepers, and small-time businesspeople. They tend to be conservative and are the strongest base for the far right. 10-15% of the population.
 
-**New Mittelstand**: The new middle class consists of white-collar workers and government employees. This is the base of liberalism. 10-15% of the population.
+**Responsibilities**: The new middle class consists of white-collar workers and government employees. This is the base of liberalism. 10-15% of the population.
 
-**Rural**: Small and large farmers and independent rural workers. Protestant farmers often support the DNVP. 20-30% of the population.
+**Outside Activities**: Small and large farmers and independent rural workers. Protestant farmers often support the DNVP. 20-30% of the population.
 
-**Catholics**: The largest religious minority, at about 30% of the population. They disproportionately support the Center Party (or the Bavarian People's Party in Bavaria).
+**Intimate** scenes range from moments of emotional vulnerability to straight-up erotic scenes, depending on the visual novel. In a typical visual novel, these tend to be the least numerous type of scenes, but are disproportionally significant.
 
-**Jews**: Account for between 0.5% to 1% of the population, and tend to support liberal parties, mostly the DDP, although substantial numbers support the SPD or KPD.
+**Home Life** typically include domestic scenes between a love interest and the protagonist, but can also includes neighborhood interactions as well. This tends to be the main scene type for love interests who start off close with the protagonist.
 
 
 @public_opinion
@@ -124,30 +124,20 @@ go-to: menu
 
 **Projected election results** (if the election were to be held now):
 
-# 1928: 30, 1930: 25, 1932: 22
 SPD: [+ spd_votes +]%
 
-[? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
-
-# 1928: 15, 1930: 15, 1932: 
 Z + BVP: [+ z_votes +]%
 
-# 1928: 10, 1930: 13
 KPD: [+ kpd_votes +]%
 
-# 1928: 5, 1930: 4 (as DstP)
 [+ ddp_name +]: [+ ddp_votes +]%
 
-# 1928: 9, 1930: 5
 DVP: [+ dvp_votes +]%
 
-# 1928: 14, 1930: 7
 DNVP: [+ dnvp_votes +]%
 
-# 1928: 3, 1930: 18
 NSDAP: [+ nsdap_votes +]%
 
-# 1928: 9, 1930: 10
 Others: [+ other_votes +]%
 
 **Detailed results for each demographic**
